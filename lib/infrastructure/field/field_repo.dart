@@ -3,14 +3,13 @@ import 'package:agino_client/infrastructure/api/api_client.dart';
 import 'package:agino_client/utils/app_constants.dart';
 import 'package:get/get.dart';
 
-
 class FieldRepo extends GetxService {
   final ApiClient apiClient;
 
   FieldRepo({required this.apiClient});
 
-  Future<Response> getFields() async {
-    return await apiClient.getData(AppConstants.GET_FIELD_END_POINT);
+  Future<Response> getFields(String farmID) async {
+    return await apiClient.getData(AppConstants.GET_FIELD_END_POINT + farmID);
   }
 
   Future<Response> postField(Field field) async {

@@ -1,7 +1,12 @@
+import 'package:agino_client/application/FieldController/field_controller.dart';
+import 'package:agino_client/application/FramControllers/farm_controller.dart';
+import 'package:agino_client/application/SensorController/sensor_controller.dart';
+import 'package:agino_client/domain/SensorModels/sensor.dart';
 import 'package:agino_client/presentation/reusable_widgets/custom_drop_down.dart';
 import 'package:agino_client/presentation/sensors/components/qr_view.dart';
 import 'package:agino_client/presentation/sensors/fields.dart';
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -91,11 +96,17 @@ class _AddSensorState extends State<AddSensor> {
     });
   }
 
-  void check() {
+  void createSensor() {
     if (_serielNumberController.text.isNotEmpty &&
         _CGDController.text.isNotEmpty &&
         _sensorInstallationController.text.isNotEmpty &&
         _cuttingDateController.text.isNotEmpty) {
+      Sensor sensorBody = Sensor(
+          fieldId: 10,
+          serialNo: _serielNumberController.text,
+          long: 10,
+          lat: 10);
+
       setState(() {
         _isButtonActive = true;
       });
@@ -108,6 +119,12 @@ class _AddSensorState extends State<AddSensor> {
 
   @override
   Widget build(BuildContext context) {
+    Get.find<FarmController>().getFarms();
+    var farms = Get.find<FarmController>().farms;
+    Get.find<FieldController>().getFields(farms[0].farmId!);
+    print("Fields for farm ");
+    var fields = Get.find<FieldController>().fields;
+
     return Scaffold(
         appBar: AppBar(
             backgroundColor: const Color.fromARGB(255, 247, 247, 247),
@@ -136,7 +153,7 @@ class _AddSensorState extends State<AddSensor> {
                         const SizedBox(height: 8),
                         DropDownButton(
                           items: farmItems,
-                          dropDownValue: 'Farm1 name',
+                          dropDownValue: farms[0].name!,
                         ),
                         const SizedBox(height: 8),
                         const Text("Field",
@@ -144,8 +161,8 @@ class _AddSensorState extends State<AddSensor> {
                                 color: Color(0xff5f676c), fontSize: 12)),
                         const SizedBox(height: 8),
                         DropDownButton(
-                          items: fieldItems,
-                          dropDownValue: "Field1 name",
+                          items: fields.map((field) => field.name).toList(),
+                          dropDownValue: fields[0].name,
                         ),
                         const SizedBox(height: 8),
                         const Text("Serial Number",
@@ -155,9 +172,8 @@ class _AddSensorState extends State<AddSensor> {
                         TextFormField(
                             controller: _serielNumberController,
                             keyboardType: TextInputType.number,
-                            onEditingComplete: () {
-                              check();
-                            },
+                            onEditingComplete: (() =>
+                                _serielNumberController.value),
                             validator: (value) {
                               if (value!.isEmpty && value.length < 6) {
                                 return "enter valid seriel number";
@@ -318,9 +334,7 @@ class _AddSensorState extends State<AddSensor> {
                         const SizedBox(height: 8),
                         TextFormField(
                             controller: _CGDController,
-                            onEditingComplete: () {
-                              check();
-                            },
+                            onEditingComplete: (() => _CGDController.value),
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
                                   color: Colors.grey,
@@ -351,9 +365,8 @@ class _AddSensorState extends State<AddSensor> {
                         const SizedBox(height: 8),
                         TextFormField(
                             controller: _sensorInstallationController,
-                            onEditingComplete: () {
-                              check();
-                            },
+                            onEditingComplete: (() =>
+                                _sensorInstallationController.value),
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
                                   color: Colors.grey,
@@ -386,9 +399,8 @@ class _AddSensorState extends State<AddSensor> {
                         const SizedBox(height: 8),
                         TextFormField(
                             controller: _cuttingDateController,
-                            onEditingComplete: () {
-                              check();
-                            },
+                            onEditingComplete: (() =>
+                                _cuttingDateController.value),
                             decoration: InputDecoration(
                               hintText: "Select Date",
                               suffixIcon: IconButton(

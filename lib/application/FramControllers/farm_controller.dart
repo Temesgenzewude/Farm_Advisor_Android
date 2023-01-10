@@ -18,8 +18,11 @@ class FarmController extends GetxController {
   Future<void> getFarms() async {
     _isLoading = true;
     Response response = await farmRepo.getFarms();
+    print(response);
 
     if (response.statusCode == 200) {
+      print("Get farms ");
+      print("Success");
       _farms = <Farm>[];
       response.body.forEach((farm) {
         _farms.add(Farm.fromMap(farm));
@@ -27,18 +30,23 @@ class FarmController extends GetxController {
       update();
     } else {
       print(response.statusText);
+      print("Couldn't get farms");
+      print("Error");
     }
 
     _isLoading = false;
   }
 
   Future<ResponseModel> postFarm(Farm farmBody) async {
+    print("From post farm");
+    print("Post farm method called");
     _isLoading = true;
     Response response = await farmRepo.postFarm(farmBody);
 
     ResponseModel responseModel;
 
     if (response.statusCode == 200) {
+      print("Success fully created farm");
       responseModel = ResponseModel(true, "Successfully created farm");
 
       getFarms();

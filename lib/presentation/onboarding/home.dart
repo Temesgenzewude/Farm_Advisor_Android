@@ -1,3 +1,4 @@
+import 'package:agino_client/application/FramControllers/farm_controller.dart';
 import 'package:agino_client/presentation/onboarding/pageview/page1.dart';
 import 'package:agino_client/presentation/onboarding/pageview/page2.dart';
 import 'package:agino_client/presentation/onboarding/pageview/page3.dart';

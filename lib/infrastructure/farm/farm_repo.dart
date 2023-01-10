@@ -3,7 +3,6 @@ import 'package:agino_client/infrastructure/api/api_client.dart';
 import 'package:agino_client/utils/app_constants.dart';
 import 'package:get/get.dart';
 
-
 class FarmRepo extends GetxService {
   final ApiClient apiClient;
 

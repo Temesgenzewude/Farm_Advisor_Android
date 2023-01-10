@@ -9,8 +9,8 @@ import 'firebase_options.dart';
 import 'package:agino_client/application/helpers/dependencies.dart' as dep;
 
 void main() async {
-  dep.init();
   WidgetsFlutterBinding.ensureInitialized();
+  dep.init();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<SensorController>().getSensors();
     Get.find<FarmController>().getFarms();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
       ),
 
       // Getx routing
-      initialRoute: RouteHelper.newFarm,
+      initialRoute: RouteHelper.initial,
 
       getPages: RouteHelper.routes,
     );

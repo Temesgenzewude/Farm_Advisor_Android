@@ -112,6 +112,8 @@ class VereficationState extends State<Verefication> {
                           print("Successfully signed up");
 
                           Get.toNamed("welcome-screen");
+                          
+                          
                         } else {
                           print("error while connecting to backend");
                         }

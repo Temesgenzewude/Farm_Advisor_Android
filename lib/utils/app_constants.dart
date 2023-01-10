@@ -1,8 +1,10 @@
 class AppConstants {
-  static const String BASE_URL = "http://37e2-196-191-60-34.ngrok.io/api";
+  static const String BASE_URL =
+      "https://64cb-197-156-111-234.ngrok.io";
 
 
-  static const String GET_SENSOR_END_POINT = "/sensors";
+  static const String GET_SENSORS_END_POINT = "/fields/sensors/";
+
   static const String POST_SENSOR_END_POINT = "/sensors";
 
   static const String PUT_SENSOR_END_POINT = "/sensors/1";

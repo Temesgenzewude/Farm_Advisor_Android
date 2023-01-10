@@ -46,6 +46,7 @@ class _NewFarmState extends State<NewFarm> {
           if (response.isSuccess) {
             print("Successfully created farm");
             Get.toNamed("new-field");
+            
           } else {
             print(response.message);
           }

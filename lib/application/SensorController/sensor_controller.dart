@@ -15,8 +15,10 @@ class SensorController extends GetxController implements GetxService {
 
   List<Sensor> get sensorList => _sensorList;
 
-  Future<void> getSensors() async {
-    Response response = await sensorRepo.getSensors();
+  Future<void> getSensors(String fieldId) async {
+    _isLoading = true;
+
+    Response response = await sensorRepo.getSensors(fieldId);
 
     if (response.statusCode == 200) {
       _sensorList = [];
@@ -25,15 +27,14 @@ class SensorController extends GetxController implements GetxService {
         _sensorList.add(Sensor.fromMap(sensor));
       });
 
-      _isLoading = true;
+      _isLoading = false;
 
       update();
-    } else {
-      
-    }
+    } else {}
   }
 
   Future<ResponseModel> postSensor(Sensor sensorBody) async {
+    
     _isLoading = true;
     Response response = await sensorRepo.postSensor(sensorBody);
 
