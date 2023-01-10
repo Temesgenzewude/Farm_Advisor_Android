@@ -9,7 +9,7 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Scaffold(
-          body: DropDownButton(),
+          body: DropDownButton(dropDownValue: '', items: [],),
         ),
       ));
 

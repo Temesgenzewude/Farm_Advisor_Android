@@ -101,7 +101,7 @@ class VereficationState extends State<Verefication> {
                       verificationId: verificationId, smsCode: smsCode);
                   auth.signInWithCredential(_credential).then((result) {
                     print(result.user!.phoneNumber);
-                    Get.toNamed("welcome-screen");
+                  
 
                     var phone = result.user!.phoneNumber;
                     if (phone != null) {

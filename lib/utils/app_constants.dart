@@ -1,5 +1,5 @@
 class AppConstants {
-  static const String BASE_URL = "http://37e2-196-191-60-34.ngrok.io/api";
+  static const String BASE_URL = "https://97b6-149-36-50-228.ngrok.io/api";
 
 
   static const String GET_SENSOR_END_POINT = "/sensors";

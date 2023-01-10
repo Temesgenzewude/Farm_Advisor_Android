@@ -9,8 +9,9 @@ import 'firebase_options.dart';
 import 'package:agino_client/application/helpers/dependencies.dart' as dep;
 
 void main() async {
-  dep.init();
+
   WidgetsFlutterBinding.ensureInitialized();
+    dep.init();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
 
       // Getx routing
-      initialRoute: RouteHelper.newFarm,
+      initialRoute: RouteHelper.initial,
 
       getPages: RouteHelper.routes,
     );
