@@ -39,6 +39,9 @@ dependencies:
   get: ^4.6.5
   google_fonts: ^3.0.1
   syncfusion_flutter_charts: ^20.4.44
+  google_maps_flutter: ^2.2.3
+  qr_code_scanner: ^1.0.1
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:
