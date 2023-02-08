@@ -14,6 +14,7 @@ class FieldController extends GetxController implements GetxService {
   bool get isLoading => _isLoading;
 
   List<Field> get fields => _fields;
+  
 
   Future<void> getFields(String farmID) async {
     Response response = await fieldRepo.getFields(farmID);
