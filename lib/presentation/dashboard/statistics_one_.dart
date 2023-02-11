@@ -1,3 +1,4 @@
+import 'package:agino_client/presentation/reusable_widgets/dashboard_custome_appbar.dart';
 import 'package:agino_client/presentation/reusable_widgets/date_picker.dart';
 import 'package:agino_client/presentation/reusable_widgets/draw_graph.dart';
 import 'package:agino_client/presentation/reusable_widgets/popup_menu.dart';
@@ -670,37 +671,6 @@ class _StatisticsOneState extends State<StatisticsOne> {
               ],
             )),
       ),
-    );
-  }
-}
-
-class DashBoardCustomAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
-  const DashBoardCustomAppBar({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Size get preferredSize => Size.fromHeight(60.0);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-        IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              print("You  Pressed me");
-            }),
-        const SizedBox(
-          width: 10,
-        ),
-        IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {
-              print("You  Pressed me");
-            }),
-      ]),
     );
   }
 }

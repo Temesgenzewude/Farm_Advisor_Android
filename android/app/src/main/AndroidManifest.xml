@@ -1,9 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="et.edu.aait.agino_client">
+    package="com.example.agino">
+    
    <application
-        android:label="agino_client"
+        android:label="agino"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCe9gfTyJ1WcrlRrmdxHfJrSBNU_bJWIPQ"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

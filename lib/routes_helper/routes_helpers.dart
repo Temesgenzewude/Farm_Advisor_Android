@@ -5,6 +5,7 @@ import 'package:agino_client/presentation/onboarding/home.dart';
 import 'package:agino_client/presentation/onboarding/signup.dart';
 import 'package:agino_client/presentation/onboarding/termsandconditions.dart';
 import 'package:agino_client/presentation/onboarding/verefication.dart';
+import 'package:agino_client/presentation/sensors/add_sensor.dart';
 import 'package:get/get.dart';
 
 class RouteHelper {
@@ -21,6 +22,7 @@ class RouteHelper {
   static const String logout = "/logout";
 
   static const String profilePage = '/profile';
+  static const String addSensorPage = '/add-sensor';
 
   static getInitial() => '$initial';
   static LoginPage() => '$login';
@@ -37,6 +39,7 @@ class RouteHelper {
   static String getHelpPage() => '$help';
   static String getTermsPage() => '$terms';
   static String getPhoneVerificationPage() => '$verification';
+  static String getAddSensorPage() => '$addSensorPage';
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: () => MyHomePage()),
@@ -58,5 +61,6 @@ class RouteHelper {
     GetPage(name: resetGDD, page: (() => ResetGDD())),
     GetPage(name: terms, page: (() => Terms())),
     GetPage(name: verification, page: (() => Verefication())),
+    GetPage(name: addSensorPage, page: (() => AddField())),
   ];
 }

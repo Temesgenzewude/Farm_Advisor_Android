@@ -1,9 +1,8 @@
 import 'package:agino_client/presentation/onboarding/pageview/page1.dart';
 import 'package:agino_client/presentation/onboarding/pageview/page2.dart';
 import 'package:agino_client/presentation/onboarding/pageview/page3.dart';
+import 'package:agino_client/presentation/reusable_widgets/logo_widget.dart';
 import 'package:flutter/material.dart';
-
-
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -17,42 +16,7 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Row(
-            children: [
-              Text(
-                "agin",
-                style: TextStyle(
-                  fontFamily: "Roboto",
-
-                  fontWeight: FontWeight.w900,
-                  fontSize: 25,
-                  color: Color(0xFF00D600),
-                ),
-              ),
-              Stack(children: [
-                Text(
-                  "o",
-                  style: TextStyle(
-                    fontFamily: "Roboto",
-                    fontWeight: FontWeight.w900,
-                    fontSize: 25,
-                    color: Color(0xFF00D600),
-                  ),
-                ),
-                Positioned(
-                  top: 5,
-                  left: 6,
-                  child: Container(
-                    color: Color(0xFF20382F),
-                    height: 10,
-                    width: 3,
-                  ),
-                )
-              ])
-            ],
-          ),
-          backgroundColor: Color(0xFF20382F)),
+      appBar: AppBar(title: LogoWidget(), backgroundColor: Color(0xFF20382F)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -113,9 +77,7 @@ class MyHomePageState extends State<MyHomePage> {
               ),
             ),
             InkWell(
-              onTap: () {
-
-              },
+              onTap: () {},
               child: Container(
                 height: 50,
                 width: 350,
@@ -138,17 +100,15 @@ class MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Already have an account?",
-                style:TextStyle(fontSize: 16)
-                ),
-                TextButton(onPressed: (){}, 
-                child: Text("Log In", style:TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
-                )
-
-                )
-                )
+                    style: TextStyle(fontSize: 16)),
+                TextButton(
+                    onPressed: () {},
+                    child: Text("Log In",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                        )))
               ],
             )
           ],
