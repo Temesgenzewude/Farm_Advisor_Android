@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 
 class Terms extends StatefulWidget {
   const Terms({super.key});
@@ -80,6 +81,17 @@ class TermsState extends State<Terms> {
       bottomNavigationBar: BottomAppBar(
         child: InkWell(
           onTap: () {
+            checkboxValue
+                ? Get.toNamed("signup")
+                : Get.showSnackbar(
+                    GetSnackBar(
+                      title: "Accept Terms and Conditions",
+                      message: "Please Accept Terms and Conditions to continue",
+                      icon: const Icon(Icons.dangerous),
+                      duration: const Duration(seconds: 5),
+                    ),
+                  );
+
             // print("clicked");
           },
           child: Container(
