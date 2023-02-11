@@ -1,8 +1,10 @@
 import 'package:agino_client/presentation/onboarding/pageview/page1.dart';
 import 'package:agino_client/presentation/onboarding/pageview/page2.dart';
 import 'package:agino_client/presentation/onboarding/pageview/page3.dart';
+import 'package:agino_client/presentation/reusable_widgets/large_app_logo.dart';
 import 'package:agino_client/presentation/reusable_widgets/logo_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -21,31 +23,7 @@ class MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Stack(
-              children: <Widget>[
-                CircleAvatar(
-                  radius: 100,
-                  backgroundColor: Color(0xFFDFEFD9),
-                  child: CircleAvatar(
-                    backgroundColor: Color(0xFF00D600),
-                    radius: 50,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xFFDFEFD9),
-                      radius: 15,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 30,
-                  left: 95,
-                  child: Container(
-                    color: Color(0xFFDFEFD9),
-                    width: 10,
-                    height: 71,
-                  ),
-                )
-              ],
-            ),
+            LargeAppLogo(),
             Text(
               "Smart Farming",
               style: TextStyle(
@@ -77,7 +55,9 @@ class MyHomePageState extends State<MyHomePage> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed("signup");
+              },
               child: Container(
                 height: 50,
                 width: 350,
@@ -102,7 +82,9 @@ class MyHomePageState extends State<MyHomePage> {
                 Text("Already have an account?",
                     style: TextStyle(fontSize: 16)),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed("login");
+                    },
                     child: Text("Log In",
                         style: TextStyle(
                           fontSize: 18,
