@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class help extends StatefulWidget {
+class Help extends StatefulWidget {
+
   @override
-  State<help> createState() => helpState();
+  State<Help> createState() => HelpState();
 }
 
-class helpState extends State<help> {
+class HelpState extends State<Help> {
    @override
   Widget build(BuildContext context) {
 

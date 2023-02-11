@@ -1,6 +1,7 @@
 import 'package:agino_client/presentation/dashboard/reset_sensors.dart';
 import 'package:agino_client/presentation/dashboard/statistics_one_.dart';
 import 'package:agino_client/presentation/reusable_widgets/draw_graph.dart';
+import 'package:agino_client/routes_helper/routes_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,22 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Agino Farm',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
+      debugShowCheckedModeBanner: false,
+      title: 'Agino Farm',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
 
-        ),
-        
+      // Getx routing
 
-        // Getx routing
-        initialRoute: "/",
-        getPages: [
-          GetPage(name: "/", page: (() => StatisticsOne())),
-          GetPage(name: "/resetGDD", page: (() => ResetGDD())),
-          
-        ],
-        
-        );
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
+    );
   }
 }

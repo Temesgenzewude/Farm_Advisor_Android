@@ -1,7 +1,9 @@
+import 'package:agino_client/presentation/onboarding/pageview/page1.dart';
+import 'package:agino_client/presentation/onboarding/pageview/page2.dart';
+import 'package:agino_client/presentation/onboarding/pageview/page3.dart';
 import 'package:flutter/material.dart';
-import 'package:agino_trial/pages/pageview/page1.dart';
-import 'package:agino_trial/pages/pageview/page2.dart';
-import 'package:agino_trial/pages/pageview/page3.dart';
+
+
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -21,7 +23,8 @@ class MyHomePageState extends State<MyHomePage> {
               Text(
                 "agin",
                 style: TextStyle(
-                  fontFamily: "ARLRDBD",
+                  fontFamily: "Roboto",
+
                   fontWeight: FontWeight.w900,
                   fontSize: 25,
                   color: Color(0xFF00D600),
@@ -31,7 +34,7 @@ class MyHomePageState extends State<MyHomePage> {
                 Text(
                   "o",
                   style: TextStyle(
-                    fontFamily: "ARLRDBD",
+                    fontFamily: "Roboto",
                     fontWeight: FontWeight.w900,
                     fontSize: 25,
                     color: Color(0xFF00D600),
