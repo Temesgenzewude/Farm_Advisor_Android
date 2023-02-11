@@ -1,14 +1,15 @@
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-class NewFarm extends StatefulWidget {
-   const NewFarm({super.key});
+class NewField extends StatefulWidget {
+  static const routeName = 'newFarm';
+   const NewField({super.key});
  
   @override
-  State<NewFarm> createState() => _NewFarmState();
+  State<NewField> createState() => _NewFieldState();
 }
 
-class _NewFarmState extends State<NewFarm> {
+class _NewFieldState extends State<NewField> {
   TextEditingController farmController = TextEditingController();
 
   TextEditingController locationController = TextEditingController();
@@ -20,7 +21,7 @@ class _NewFarmState extends State<NewFarm> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(
-          'NEWFARM',
+          'NEWFIELD',
           style: TextStyle(
               color: Color(0xFF5F676C),
               fontSize: 14,
@@ -44,7 +45,7 @@ class _NewFarmState extends State<NewFarm> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text("Farm name",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14),),
+              const Text("Field name",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 16,),),
               const SizedBox(
                 height: 5,
               ),
@@ -61,57 +62,45 @@ class _NewFarmState extends State<NewFarm> {
                     borderSide: BorderSide.none,
                   ),
                  
-                  hintText: 'create new farm',
+                  hintText: 'Enter field name',
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 17,
+                    fontSize: 14,
                   ),
                 ),
               ),
               const SizedBox(
                 height: 30,
               ),
-              const Text("Location"),
+              const Text("Altitude above sea level",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400),),
               const SizedBox(
                 height: 5,
               ),
               TextFormField(
-                controller: locationController,
-                keyboardType: TextInputType.name,
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  suffixIcon: InkWell(
-                    onTap: (){},
-                    child: const Padding(
-                      padding: EdgeInsets.only(left: 6),
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.black,
-                        size: 23,
-                      ),
-                    ),
-                  ),
+                controller: farmController,
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
-                  contentPadding: const EdgeInsets.only(top: 10),
-                  border: const OutlineInputBorder(
+                  contentPadding: EdgeInsets.only(top: 10),
+                  border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(7),
                     ),
                     borderSide: BorderSide.none,
                   ),
                  
-                  hintText: 'search location',
-                  hintStyle: const TextStyle(
+                  hintText: 'Enter meters',
+                  hintStyle: TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 17,
+                    fontSize: 14,
                   ),
                 ),
               ),
-            ]),
+            ]
+            ),
             CustomButton(
                 color: const Color.fromARGB(255, 4, 90, 57),
-                text: "Create new farm",
+                text: "Create New Field",
                 onTap: () {}),
           ],
         ),

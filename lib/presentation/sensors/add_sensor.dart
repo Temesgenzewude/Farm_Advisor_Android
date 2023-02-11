@@ -3,8 +3,9 @@ import 'package:agino_client/presentation/reusable_widgets/large_app_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddField extends StatelessWidget {
-  const AddField({super.key});
+class SensorPage extends StatelessWidget {
+
+  const SensorPage({super.key});
 
   @override
   Widget build(BuildContext context) {
