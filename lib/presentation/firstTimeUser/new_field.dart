@@ -1,8 +1,8 @@
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
+import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class NewField extends StatefulWidget {
-  static const routeName = 'newFarm';
    const NewField({super.key});
  
   @override
@@ -45,7 +45,7 @@ class _NewFieldState extends State<NewField> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text("Field name",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 16,),),
+              const TextWidget(text: "Field name", fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black),
               const SizedBox(
                 height: 5,
               ),
@@ -72,7 +72,7 @@ class _NewFieldState extends State<NewField> {
               const SizedBox(
                 height: 30,
               ),
-              const Text("Altitude above sea level",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400),),
+              const TextWidget(text: "Altitude above sea level", fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black),
               const SizedBox(
                 height: 5,
               ),
