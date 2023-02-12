@@ -1,11 +1,12 @@
-import 'package:agino_client/presentation/dashboard/reset_gdd.dart';
-import 'package:agino_client/presentation/dashboard/statistics_one_.dart';
-import 'package:agino_client/presentation/reusable_widgets/draw_graph.dart';
 import 'package:agino_client/routes_helper/routes_helpers.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Agino Farm',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        
       ),
 
       // Getx routing
