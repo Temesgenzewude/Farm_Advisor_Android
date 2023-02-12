@@ -1,13 +1,10 @@
-
 import 'package:agino_client/presentation/reusable_widgets/dashboard_custome_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../reusable_widgets/custom_button.dart';
 
-
 class Welcome extends StatefulWidget {
-  static const routeName = "/welcome";
-
   @override
   State<Welcome> createState() => _WelcomeState();
 }
@@ -51,10 +48,7 @@ class _WelcomeState extends State<Welcome> {
             color: const Color.fromARGB(255, 4, 90, 57),
             text: "Create NewFarm",
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NewFarm()),
-              );
+              Get.toNamed('new-farm');
             },
           )
         ],
@@ -62,3 +56,4 @@ class _WelcomeState extends State<Welcome> {
     );
   }
 }
+
