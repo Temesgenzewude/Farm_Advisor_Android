@@ -1,3 +1,5 @@
+import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
+import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class Verefication extends StatefulWidget {
@@ -23,10 +25,7 @@ class VereficationState extends State<Verefication> {
                 // print("clicked");
               },
             ),
-            Text(
-              "SIGN UP",
-              style: TextStyle(color: Color(0xFF5F676C), fontSize: 15),
-            )
+            const TextWidget(text: "SIGN UP", fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black)
           ],
         ),
         backgroundColor: Colors.white,
@@ -34,43 +33,41 @@ class VereficationState extends State<Verefication> {
       body: Container(
         margin: EdgeInsets.fromLTRB(15, 15, 10, 5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              child: Text(
-                "Verification Code",
-                style: TextStyle(
-                    color: Color(0xFF20382F),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
-            Form(
-              key: _formKey,
-              child: TextFormField(
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  _formKey.currentState?.validate();
-                },
-                decoration: InputDecoration(
-                  hintText: "Enter Verification Code",
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const TextWidget(text: "Verification", fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black),
+                Form(
+                  key: _formKey,
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {
+                      _formKey.currentState?.validate();
+                    },
+                    decoration: const InputDecoration(
+                      hintText: "Enter Verification Code",
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Please enter verefication code";
+                      } else if (value.length == 6) {
+                        setState(() {
+                          isButtonActive = true;
+                        });
+                      } else {
+                        setState(() {
+                          isButtonActive = false;
+                        });
+                        return "Invalid verefication code";
+                      }
+                    },
+                  ),
                 ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Please enter verefication code";
-                  } else if (value.length == 6) {
-                    setState(() {
-                      isButtonActive = true;
-                    });
-                  } else {
-                    setState(() {
-                      isButtonActive = false;
-                    });
-                    return "Invalid verefication code";
-                  }
-                },
-              ),
-            )
+              ],
+            ),
+            CustomButton(text: "Continue", onTap: (){})
           ],
         ),
       ),
