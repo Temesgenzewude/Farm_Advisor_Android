@@ -23,7 +23,7 @@ class _WelcomeState extends State<Welcome> {
           SizedBox(
             height: 203,
             width: 203,
-            child: Image.asset("assets/farm.png"),
+            child: Image.asset("assets/images/farm.png"),
           ),
           // const CircleAvatar(
           //   radius: 101,
