@@ -1,4 +1,4 @@
-import 'package:agino_client/presentation/dashboard/reset_sensors.dart';
+import 'package:agino_client/presentation/dashboard/reset_gdd.dart';
 import 'package:agino_client/presentation/dashboard/statistics_one_.dart';
 import 'package:agino_client/presentation/firstTimeUser/newFarm.dart';
 import 'package:agino_client/presentation/more/profile.dart';
@@ -9,6 +9,7 @@ import 'package:agino_client/presentation/onboarding/verefication.dart';
 import 'package:agino_client/presentation/sensors/add_sensor.dart';
 import 'package:agino_client/presentation/sensors/fields.dart';
 import 'package:agino_client/presentation/sensors/new_sensor.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../presentation/firstTimeUser/new_field.dart';
@@ -17,6 +18,8 @@ class RouteHelper {
   static const String initial = "/";
 
   static const String resetGDD = "/reset-gdd";
+  static const String resetAllGDD = "/reset-all-gdd";
+
   static const String statistics = "/statistics";
   static const String help = "/help";
   static const String terms = "/terms";
@@ -39,7 +42,9 @@ class RouteHelper {
 
   static String getStatisticsPage(int pageId) => '$statistics?pageId=$pageId';
 
-  static String getResetSensorPage(int pageId) => '$resetGDD?pageId=$pageId ';
+  static String getResetGDDPage(int pageId) => '$resetGDD?pageId=$pageId ';
+  static String getResetAllGDDPage(int pageId) =>
+      '$resetAllGDD?pageId=$pageId ';
 
   static String getSignupPage() => '$signup';
   static String getNewFarm() => '$newFarm';
@@ -83,5 +88,10 @@ class RouteHelper {
         }),
     GetPage(name: newFarm, page: (() => NewFarm())),
     GetPage(name: newField, page: (() => NewField())),
+    GetPage(
+        name: resetAllGDD,
+        page: () {
+          return Container();
+        })
   ];
 }

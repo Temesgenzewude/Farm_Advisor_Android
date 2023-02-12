@@ -56,7 +56,8 @@ class MyHomePageState extends State<MyHomePage> {
             ),
             InkWell(
               onTap: () {
-                Get.toNamed("signup");
+                Get.toNamed("terms");
+
               },
               child: Container(
                 height: 50,

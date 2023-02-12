@@ -11,7 +11,7 @@ class ReusableTopPopMenu extends StatefulWidget {
 class _ReusableTopPopMenuState extends State<ReusableTopPopMenu> {
   void handleClick(int value) {
     if (value == 1) {
-      Get.toNamed("/resetGDD");
+      Get.toNamed("/reset-all-gdd");
     } else {
       Get.toNamed("/");
     }
@@ -49,9 +49,10 @@ class _ReusableSensorsPopMenuState extends State<ReusableSensorsPopMenu> {
   //handle click to sensors popup menu
   void handleClick(int value) {
     if (value == 1) {
-      Get.toNamed("/resetGDD");
+      Get.toNamed("/reset-gdd");
     } else {
       Get.toNamed("/");
+
     }
   }
 

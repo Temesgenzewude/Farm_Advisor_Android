@@ -1,4 +1,4 @@
-import 'package:agino_client/presentation/dashboard/reset_sensors.dart';
+import 'package:agino_client/presentation/dashboard/reset_gdd.dart';
 import 'package:agino_client/presentation/dashboard/statistics_one_.dart';
 import 'package:agino_client/presentation/reusable_widgets/draw_graph.dart';
 import 'package:agino_client/routes_helper/routes_helpers.dart';
