@@ -1,7 +1,6 @@
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
+import 'package:get/get.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -66,7 +65,7 @@ class SignUpState extends State<SignUp> {
                     _formKey.currentState?.validate();
                   },
                   decoration: InputDecoration(
-                      labelText: "Enter phone number",
+                      hintText: "Enter you phone number",
                       prefixIcon: Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 6),
@@ -130,6 +129,7 @@ class SignUpState extends State<SignUp> {
       bottomNavigationBar: BottomAppBar(
         child: InkWell(
           onTap: () {
+            Get.toNamed("phone-verification");
             // print("clicked");
           },
           child: Container(

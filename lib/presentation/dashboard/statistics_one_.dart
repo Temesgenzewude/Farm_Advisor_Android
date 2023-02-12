@@ -303,6 +303,7 @@ class _StatisticsOneState extends State<StatisticsOne> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Stack(
+                                          
                                             alignment:
                                                 AlignmentDirectional.center,
                                             children: [

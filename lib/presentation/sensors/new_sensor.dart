@@ -4,14 +4,15 @@ import "package:flutter/material.dart";
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class NewField extends StatefulWidget {
-  const NewField({super.key});
+class AddSensor extends StatefulWidget {
+  const AddSensor({super.key});
+
 
   @override
-  State<NewField> createState() => _NewFieldState();
+  State<AddSensor> createState() => _AddSensorState();
 }
 
-class _NewFieldState extends State<NewField> {
+class _AddSensorState extends State<AddSensor> {
   final _formKey = GlobalKey<FormState>();
   final _isFormValid = true;
   final _fieldNameController = TextEditingController();

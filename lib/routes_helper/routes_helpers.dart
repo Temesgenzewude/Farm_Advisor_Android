@@ -1,6 +1,5 @@
 import 'package:agino_client/presentation/dashboard/reset_sensors.dart';
 import 'package:agino_client/presentation/dashboard/statistics_one_.dart';
-import 'package:agino_client/presentation/firstTimeUser/add_farm_field.dart';
 import 'package:agino_client/presentation/firstTimeUser/newFarm.dart';
 import 'package:agino_client/presentation/more/profile.dart';
 import 'package:agino_client/presentation/onboarding/home.dart';
@@ -8,6 +7,8 @@ import 'package:agino_client/presentation/onboarding/signup.dart';
 import 'package:agino_client/presentation/onboarding/termsandconditions.dart';
 import 'package:agino_client/presentation/onboarding/verefication.dart';
 import 'package:agino_client/presentation/sensors/add_sensor.dart';
+import 'package:agino_client/presentation/sensors/fields.dart';
+import 'package:agino_client/presentation/sensors/new_sensor.dart';
 import 'package:get/get.dart';
 
 import '../presentation/firstTimeUser/new_field.dart';
@@ -26,7 +27,9 @@ class RouteHelper {
   static const String logout = "/logout";
 
   static const String profilePage = '/profile';
+  static const String sensorPage = '/sensor';
   static const String addSensorPage = '/add-sensor';
+  static const String fieldsPage = '/fields';
   static const String newFarm = '/new-farm';
   static const String newField = '/new-field';
 
@@ -48,6 +51,8 @@ class RouteHelper {
   static String getTermsPage() => '$terms';
   static String getPhoneVerificationPage() => '$verification';
   static String getAddSensorPage() => '$addSensorPage';
+  static String getSensorPage() => '$sensorPage';
+  static String getFieldsPage() => '$fieldsPage';
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: () => MyHomePage()),
@@ -69,9 +74,14 @@ class RouteHelper {
     GetPage(name: resetGDD, page: (() => ResetGDD())),
     GetPage(name: terms, page: (() => Terms())),
     GetPage(name: verification, page: (() => Verefication())),
-    GetPage(name: addSensorPage, page: (() => AddField())),
+    GetPage(name: sensorPage, page: (() => SensorPage())),
+    GetPage(name: addSensorPage, page: (() => AddSensor())),
+    GetPage(
+        name: fieldsPage,
+        page: () {
+          return Fields();
+        }),
     GetPage(name: newFarm, page: (() => NewFarm())),
     GetPage(name: newField, page: (() => NewField())),
-
   ];
 }

@@ -10,7 +10,6 @@ class VereficationState extends State<Verefication> {
   bool isButtonActive = false;
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -33,15 +32,13 @@ class VereficationState extends State<Verefication> {
         backgroundColor: Colors.white,
       ),
       body: Container(
-
-        margin: EdgeInsets.fromLTRB(15,15,10,5),
+        margin: EdgeInsets.fromLTRB(15, 15, 10, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-           Container(
+            Container(
               child: Text(
-                "Verefication Code",
-
+                "Verification Code",
                 style: TextStyle(
                     color: Color(0xFF20382F),
                     fontSize: 24,
@@ -51,31 +48,29 @@ class VereficationState extends State<Verefication> {
             Form(
               key: _formKey,
               child: TextFormField(
-                 keyboardType:TextInputType.number,
-                  onChanged: (value) {
-                    _formKey.currentState?.validate();
-                  },
-                 decoration: InputDecoration(
-                  labelText: "Enter phone number",
-                 ),
-                 validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Please enter verefication number";
-                    } else if (value.length == 6) {
-                      setState(() {
-                        isButtonActive = true;
-                      }
-                      );
-                    } else {
-                      setState(() {
-                        isButtonActive = false;
-                      });
-                      return "Invalid verefication Number";
-                    }
-                  },
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  _formKey.currentState?.validate();
+                },
+                decoration: InputDecoration(
+                  hintText: "Enter Verification Code",
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please enter verefication code";
+                  } else if (value.length == 6) {
+                    setState(() {
+                      isButtonActive = true;
+                    });
+                  } else {
+                    setState(() {
+                      isButtonActive = false;
+                    });
+                    return "Invalid verefication code";
+                  }
+                },
               ),
-              
-              )
+            )
           ],
         ),
       ),
