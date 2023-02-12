@@ -1,3 +1,4 @@
+import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,41 +20,36 @@ class SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            GestureDetector(
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: Color(0xFF5F676C),
-              ),
-              onTap: () {
-                // print("clicked");
-              },
-            ),
-            Text(
-              "SIGN UP",
-              style: TextStyle(color: Color(0xFF5F676C), fontSize: 15),
-            )
-          ],
+        automaticallyImplyLeading: false,
+        title: const Text(
+          'SIGN UP',
+          style: TextStyle(
+              color: Color(0xFF5F676C),
+              fontSize: 14,
+              fontWeight: FontWeight.w500),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFF7F7F7),
+        leading: GestureDetector(
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(10),
-              child: Text(
-                "Sign Up With Your Phone Number",
-                style: TextStyle(
-                    color: Color(0xFF20382F),
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500),
-              ),
+              margin: const EdgeInsets.all(10),
+              child:const TextWidget(text: "Sign up with your phone number", fontWeight: FontWeight.w400, fontSize: 20, color: Colors.black)
+
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Form(
                 key: _formKey,
                 child: TextFormField(
@@ -68,8 +64,8 @@ class SignUpState extends State<SignUp> {
                       hintText: "Enter you phone number",
                       prefixIcon: Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 6),
-                        margin: EdgeInsets.symmetric(horizontal: 8),
+                            const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: Row(mainAxisSize: MainAxisSize.min, children: [
                           GestureDetector(
                             onTap: () async {
@@ -86,18 +82,18 @@ class SignUpState extends State<SignUp> {
                                       ? countryCode!.flagImage
                                       : null,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                       horizontal: 16, vertical: 6),
                                   decoration: BoxDecoration(
                                       color: Colors.black,
                                       borderRadius: BorderRadius.circular(5)),
                                   child: Text(
                                     countryCode?.dialCode ?? "+251",
-                                    style: TextStyle(color: Colors.white),
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ],
