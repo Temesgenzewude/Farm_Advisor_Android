@@ -20,21 +20,24 @@ class SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            GestureDetector(
-              child: const Icon(
-                Icons.arrow_back_ios,
-                color: Color(0xFF5F676C),
-              ),
-              onTap: () {
-                // print("clicked");
-              },
-            ),
-            const TextWidget(text: "SIGN UP", fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black)
-          ],
+        automaticallyImplyLeading: false,
+        title: const Text(
+          'SIGN UP',
+          style: TextStyle(
+              color: Color(0xFF5F676C),
+              fontSize: 14,
+              fontWeight: FontWeight.w500),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFFF7F7F7),
+        leading: GestureDetector(
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Center(
         child: Column(
