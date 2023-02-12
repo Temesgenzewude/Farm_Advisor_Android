@@ -2,7 +2,6 @@ import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class NewFarm extends StatefulWidget {
-  static const routeName = 'newFarm';
    const NewFarm({super.key});
  
   @override
