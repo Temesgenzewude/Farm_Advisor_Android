@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["Roboto"]
+  "cSpell.words": [
+    "Roboto"
+  ],
+  "cmake.sourceDirectory": "${workspaceFolder}/linux"
 }
