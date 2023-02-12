@@ -1,10 +1,11 @@
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
+import 'package:agino_client/presentation/reusable_widgets/custom_drop_down.dart';
 import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class NewField extends StatefulWidget {
-   const NewField({super.key});
- 
+  const NewField({super.key});
+
   @override
   State<NewField> createState() => _NewFieldState();
 }
@@ -13,8 +14,6 @@ class _NewFieldState extends State<NewField> {
   TextEditingController farmController = TextEditingController();
 
   TextEditingController locationController = TextEditingController();
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +28,7 @@ class _NewFieldState extends State<NewField> {
         ),
         backgroundColor: const Color(0xFFF7F7F7),
         leading: GestureDetector(
-          child:const Icon(
+          child: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
@@ -44,8 +43,27 @@ class _NewFieldState extends State<NewField> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const TextWidget(text: "Field name", fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, 
+            children: [
+              const TextWidget(
+                text: "Farm",
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Colors.black,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const DropDownButton(),
+              const SizedBox(
+                height: 20,
+              ),
+              const TextWidget(
+                text: "Field name",
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Colors.black,
+              ),
               const SizedBox(
                 height: 5,
               ),
@@ -61,7 +79,6 @@ class _NewFieldState extends State<NewField> {
                     ),
                     borderSide: BorderSide.none,
                   ),
-                 
                   hintText: 'Enter field name',
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w500,
@@ -70,9 +87,13 @@ class _NewFieldState extends State<NewField> {
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
-              const TextWidget(text: "Altitude above sea level", fontWeight: FontWeight.w400, fontSize: 16, color: Colors.black),
+              const TextWidget(
+                  text: "Altitude above sea level",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Colors.black),
               const SizedBox(
                 height: 5,
               ),
@@ -88,7 +109,6 @@ class _NewFieldState extends State<NewField> {
                     ),
                     borderSide: BorderSide.none,
                   ),
-                 
                   hintText: 'Enter meters',
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w500,
@@ -96,8 +116,7 @@ class _NewFieldState extends State<NewField> {
                   ),
                 ),
               ),
-            ]
-            ),
+            ]),
             CustomButton(
                 color: const Color.fromARGB(255, 4, 90, 57),
                 text: "Create New Field",
