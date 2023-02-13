@@ -1,10 +1,11 @@
+import 'package:agino_client/presentation/reusable_widgets/dashboard_custome_appbar.dart';
 import 'package:agino_client/presentation/sensors/alert_tile.dart';
 import 'package:agino_client/presentation/sensors/components/Field_tile.dart';
 import "package:flutter/material.dart";
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Fields extends StatefulWidget {
-  const Fields({super.key});
+  final bool? isAlerts;
+  const Fields({super.key, this.isAlerts = true});
 
   @override
   State<Fields> createState() => _FieldsState();
@@ -16,28 +17,7 @@ class _FieldsState extends State<Fields> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: const Color(0xFF203825),
-            elevation: 0,
-            title: Image.asset("assets/logo1.png"),
-            //const Text("agino",
-            //     style: TextStyle(
-            //         color: Colors.green,
-            //         fontWeight: FontWeight.w900,
-            //         fontSize: 28)),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    IconButton(icon: const Icon(Icons.add), onPressed: () {}),
-                    const SizedBox(width: 10),
-                    IconButton(
-                        icon: const Icon(Icons.person), onPressed: () {}),
-                  ],
-                ),
-              )
-            ]),
+        appBar: DashBoardCustomAppBar(),
         body: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             color: const Color.fromARGB(255, 247, 247, 247),
@@ -48,7 +28,11 @@ class _FieldsState extends State<Fields> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset("assets/farm.svg"),
+                      Container(
+                        height: 40,
+                        width: 40,
+                        child: Image.asset("assets/images/farm.png"),
+                      ),
                       Container(
                         width: 170,
                         height: 44,
@@ -87,25 +71,42 @@ class _FieldsState extends State<Fields> {
                   const SizedBox(
                     height: 50,
                   ),
-                  const Text("Alerts",
-                      style: TextStyle(
-                          color: Color(0xff20382F),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16)),
-                  const SizedBox(height: 10),
-                  AlertTile(
-                    message: "Low battery on sensor in field ",
-                    day: "Today",
-                    fieldName: "Field One",
-                  ),
-                  const SizedBox(height: 10),
-                  AlertTile(
-                      message: "GDD exceeded in  field ",
-                      day: "Yesterday ",
-                      fieldName: "Field Two"),
-                  const SizedBox(
-                    height: 50,
-                  ),
+                  //for alerts
+                  widget.isAlerts!
+                      ? Container(
+                          child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("Alerts",
+                                style: TextStyle(
+                                    color: Color(0xff20382F),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16)),
+                            Container(
+                              margin: const EdgeInsets.only(left: 5),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    AlertTile(
+                                      message:
+                                          "Low battery on sensor in field ",
+                                      day: "Today",
+                                      fieldName: "Field One",
+                                    ),
+                                    const SizedBox(height: 10),
+                                    AlertTile(
+                                        message: "GDD exceeded in  field ",
+                                        day: "Yesterday ",
+                                        fieldName: "Field Two"),
+                                    const SizedBox(
+                                      height: 50,
+                                    ),
+                                  ]),
+                            )
+                          ],
+                        ))
+                      : Container(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

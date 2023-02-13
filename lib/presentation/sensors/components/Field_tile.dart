@@ -26,7 +26,7 @@ class FieldTile extends StatelessWidget {
             ListTile(
               leading: const CircleAvatar(
                 backgroundImage: AssetImage(
-                  "assets/sensor2.png",
+                  "assets/images/farm.png",
                 ),
                 radius: 33,
               ),
