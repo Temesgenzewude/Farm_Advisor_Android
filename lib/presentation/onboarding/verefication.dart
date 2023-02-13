@@ -91,15 +91,15 @@ class VereficationState extends State<Verefication> {
                 text: "Continue",
                 onTap: () {
                   FirebaseAuth auth = FirebaseAuth.instance;
-                  final smsCode = smsController.text;
+                  final smsCode = smsController.text.trim();
                   final _credential = PhoneAuthProvider.credential(
                       verificationId: verificationId, smsCode: smsCode);
                   auth.signInWithCredential(_credential).then((result) {
-                    Get.toNamed("sensor");
+                    print(result.user!.phoneNumber);
+                    Get.toNamed("welcome-screen");
                   }).catchError((e) {
                     print(e);
                   });
-                  Get.toNamed("sensor");
                 })
           ],
         ),
