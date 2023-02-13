@@ -16,6 +16,8 @@ class _NewFieldState extends State<NewField> {
   TextEditingController fieldNameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  List<String> items = ["Farm Name 1"];
+  String dropDownValue = "Farm Name 1";
 
   void check() {
     if (fieldNameController.text.isNotEmpty &&
@@ -60,14 +62,14 @@ class _NewFieldState extends State<NewField> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const TextWidget(
-                  text: "Field name",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  color: Colors.black),
-              const SizedBox(
-                height: 5,
-              ),
+              const Text("Farm",
+                  style: TextStyle(color: Color(0xff5f676c), fontSize: 12)),
+              const SizedBox(height: 8),
+              DropDownButton(items: items, dropDownValue: dropDownValue),
+              const SizedBox(height: 20),
+              const Text("Field Name",
+                  style: TextStyle(color: Color(0xff5f676c), fontSize: 12)),
+              const SizedBox(height: 8),
               TextFormField(
                 controller: fieldNameController,
                 onEditingComplete: () {
@@ -93,14 +95,10 @@ class _NewFieldState extends State<NewField> {
               const SizedBox(
                 height: 30,
               ),
-              const TextWidget(
-                  text: "Altitude above sea level",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  color: Colors.black),
-              const SizedBox(
-                height: 5,
-              ),
+              const SizedBox(height: 20),
+              const Text("Altitude above sea level",
+                  style: TextStyle(color: Color(0xff5f676c), fontSize: 12)),
+              const SizedBox(height: 8),
               TextFormField(
                 keyboardType: TextInputType.number,
                 controller: locationController,
