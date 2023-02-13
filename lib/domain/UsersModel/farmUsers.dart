@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'dart:convert';
 
 class FarmUsers {
@@ -37,8 +38,8 @@ class FarmUsers {
   }
 
   String toJson() => json.encode(toMap());
-  factory FarmUsers.Json(String source) =>
-      FarmUsers.fromMap(json.decode(source));
+  // ignore: non_constant_identifier_names
+  factory FarmUsers.Json(String source) => FarmUsers.fromMap(json.decode(source));
 }
 
 
