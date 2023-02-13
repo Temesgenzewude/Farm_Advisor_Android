@@ -28,12 +28,12 @@ class AppConstants {
   static const String DELETE_USER_END_POINT = "/users/1";
 
   //FIELD
-  static const String GET_FIELD_END_POINT = "/fields";
-  static const String POST_FIELD_END_POINT = "/fields";
+  static const String GET_FIELD_END_POINT = "/farmFields";
+  static const String POST_FIELD_END_POINT = "/farmFields";
 
-  static const String PUT_FIELD_END_POINT = "/fields/1";
+  static const String PUT_FIELD_END_POINT = "/farmFields/1";
 
-  static const String DELETE_FIELD_END_POINT = "/fields/1";
+  static const String DELETE_FIELD_END_POINT = "/farmFields/1";
 
   //NOTIFICATION
   static const String GET_NOTIFICATION_END_POINT = "/notifications";
