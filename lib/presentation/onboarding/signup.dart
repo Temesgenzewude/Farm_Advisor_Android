@@ -6,6 +6,9 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../application/auth/auth_controller.dart';
+import '../../domain/auth/signup_model.dart';
+
 class SignUp extends StatefulWidget {
   SignUp({super.key});
   @override
@@ -71,7 +74,6 @@ class SignUpState extends State<SignUp> {
                 color: Colors.black)
           ],
         ),
-        backgroundColor: Colors.white,
       ),
       body: Center(
         child: Column(
@@ -185,7 +187,22 @@ class SignUpState extends State<SignUp> {
             });
             final code = countryCode?.dialCode ?? "+251";
             final phoneNumber = code + phoneController.text;
-            register(phoneNumber, context);
+            // register(phoneNumber, context);
+            var authController = Get.find<AuthController>();
+            SignUpBody signUpBody = SignUpBody(phoneNumber: phoneNumber);
+            authController.registration(signUpBody).then((status) {
+              print(status.message);
+              if (status.isSuccess) {
+                print("Successfully signed up");
+
+                Get.toNamed("welcome-screen");
+              } else {
+                print(status.message);
+                print("error while connecting to backend");
+              }
+            }).catchError((err) {
+              print(err);
+            });
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(15, 10, 15, 10),

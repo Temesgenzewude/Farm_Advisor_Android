@@ -1,4 +1,5 @@
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
+import 'package:agino_client/presentation/reusable_widgets/custom_drop_down.dart';
 import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
 import 'package:agino_client/presentation/sensors/add_sensor.dart';
 import 'package:flutter/material.dart';
@@ -142,13 +143,10 @@ class _NewFieldState extends State<NewField> {
                             const Color.fromARGB(128, 39, 83, 66)),
                     onPressed: _isButtonActive
                         ? () {
-                            if (_formKey.currentState!.validate()) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SensorPage()));
-                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SensorPage()));
                           }
                         : null,
                     child: const Text("ADD MY FIRST FIELD")))

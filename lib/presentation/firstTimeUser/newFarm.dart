@@ -15,6 +15,8 @@ class _NewFarmState extends State<NewFarm> {
   CameraPosition? cameraPosition;
   LatLng startLocation = LatLng(8.990152, 38.98368);
   String location = "Location Name:";
+  String lat = "8.990152";
+  String long = "38.98368";
   ScrollPhysics? _physics = null;
   TextEditingController farmController = TextEditingController();
 
@@ -161,10 +163,14 @@ class _NewFarmState extends State<NewFarm> {
                                 cameraPosition!.target.longitude);
                         setState(() {
                           //get place name from lat and lang
-                          locationController.text =
-                              placemarks.first.administrativeArea.toString() +
-                                  ", " +
-                                  placemarks.first.street.toString();
+                          lat = cameraPosition!.target.latitude
+                              .toStringAsPrecision(7);
+                          long = cameraPosition!.target.longitude
+                              .toStringAsPrecision(7);
+                          locationController.text = '${lat},${long}';
+                          // placemarks.first.administrativeArea.toString() +
+                          //     ", " +
+                          //     placemarks.first.street.toString();
                         });
                       },
                     ),

@@ -4,6 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../application/auth/auth_controller.dart';
+import '../../domain/auth/signup_model.dart';
+
 class Verefication extends StatefulWidget {
   final String verificationId;
 
@@ -96,7 +99,23 @@ class VereficationState extends State<Verefication> {
                       verificationId: verificationId, smsCode: smsCode);
                   auth.signInWithCredential(_credential).then((result) {
                     print(result.user!.phoneNumber);
-                    Get.toNamed("welcome-screen");
+
+                    var phone = result.user!.phoneNumber;
+                    if (phone != null) {
+                      var authController = Get.find<AuthController>();
+                      SignUpBody signUpBody = SignUpBody(phoneNumber: phone);
+                      authController.registration(signUpBody).then((status) {
+                        if (status.isSuccess) {
+                          print("Successfully signed up");
+
+                          Get.toNamed("welcome-screen");
+                        } else {
+                          print("error while connecting to backend");
+                        }
+                      }).catchError((err) {
+                        print(err);
+                      });
+                    }
                   }).catchError((e) {
                     print(e);
                   });
