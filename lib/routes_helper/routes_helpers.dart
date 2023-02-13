@@ -63,7 +63,7 @@ class RouteHelper {
   static String getFieldsPage() => '$fieldsPage';
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => MyHomePage()),
+    GetPage(name: initial, page: () => NewField()),
     GetPage(
         name: statistics,
         page: () {
