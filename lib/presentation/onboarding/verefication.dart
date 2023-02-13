@@ -100,19 +100,18 @@ class VereficationState extends State<Verefication> {
                     print(result.user!.phoneNumber);
                     Get.toNamed("welcome-screen");
 
-                    // var phone = result.user!.phoneNumber;
-                    // if (phone != null) {
-                    //   SignUpBody signUpBody = SignUpBody(phoneNumber: phone);
-                    //   authController.registration(signUpBody).then((status) {
+                    var phone = result.user!.phoneNumber;
+                    if (phone != null) {
+                      var authController = Get.find<AuthController>();
+                      SignUpBody signUpBody = SignUpBody(phoneNumber: phone);
+                      authController.registration(signUpBody).then((status) {
+                        if (status.isSuccess) {
+                          print("Successfully signed up");
 
-                    //     if (status.isSuccess) {
-                    //       print("Successfully signed up");
-
-                    //       Get.toNamed("welcome-screen");
-
-                    //     }
-                    //   });
-                    // }
+                          Get.toNamed("welcome-screen");
+                        }
+                      });
+                    }
 
                     // Get.snackbar("Error", "Please check your phone number");
                   }).catchError((e) {

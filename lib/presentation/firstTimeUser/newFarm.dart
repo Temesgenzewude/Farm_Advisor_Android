@@ -1,7 +1,12 @@
+import 'package:agino_client/application/FramControllers/farm_controller.dart';
+import 'package:agino_client/domain/FarmModels/farm.dart';
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
+import 'package:agino_client/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NewFarm extends StatefulWidget {
   const NewFarm({super.key});
@@ -24,10 +29,21 @@ class _NewFarmState extends State<NewFarm> {
   Widget build(BuildContext context) {
     void postFarmData() {
       String name = farmController.text.trim();
-      String latitude = locationController.text.trim();
-      String longitude = locationController.text.trim();
+      String location = locationController.text.trim();
 
-      
+      if (name.isNotEmpty && location.isNotEmpty) {
+        var farmController = Get.find<FarmController>();
+        var sharedPreferences = Get.find<SharedPreferences>();
+        var latLong = location.split(" ");
+        String latitude = latLong[0];
+        String longitude = latLong[1];
+
+        Farm farm = Farm(
+            name: name,
+            latitude: latitude,
+            longitude: longitude,
+            userId: "0dc68a1a-8d1b-4760-8004-08db0dff878d");
+      }
     }
 
     return Scaffold(

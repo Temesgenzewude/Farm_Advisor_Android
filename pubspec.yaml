@@ -49,6 +49,7 @@ dependencies:
   flutter_google_places_hoc081098: ^1.2.0
   google_api_headers: ^1.5.0+1
   google_maps_webservice: ^0.0.20-nullsafety.5
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_test:

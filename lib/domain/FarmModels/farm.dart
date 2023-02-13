@@ -12,7 +12,8 @@ class Farm {
   
 
   Farm(
-      {required this.farmId,
+      { this.farmId,
+
       required this.name,
       required this.latitude,
       required this.longitude,
