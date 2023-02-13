@@ -3,9 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+import 'package:agino_client/application/helpers/dependencies.dart' as dep;
+
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dep.init();
 
   runApp(const MyApp());
 }
@@ -21,11 +24,9 @@ class MyApp extends StatelessWidget {
       title: 'Agino Farm',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        
       ),
 
       // Getx routing
-
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
     );
