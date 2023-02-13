@@ -1,3 +1,5 @@
+import 'package:agino_client/application/auth/auth_controller.dart';
+import 'package:agino_client/domain/auth/signup_model.dart';
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
 import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -95,11 +97,29 @@ class VereficationState extends State<Verefication> {
                   final _credential = PhoneAuthProvider.credential(
                       verificationId: verificationId, smsCode: smsCode);
                   auth.signInWithCredential(_credential).then((result) {
-                    Get.toNamed("sensor");
+                    print(result.user!.phoneNumber);
+                    Get.toNamed("welcome-screen");
+
+                    // var phone = result.user!.phoneNumber;
+                    // if (phone != null) {
+                    //   SignUpBody signUpBody = SignUpBody(phoneNumber: phone);
+                    //   authController.registration(signUpBody).then((status) {
+
+                    //     if (status.isSuccess) {
+                    //       print("Successfully signed up");
+
+                    //       Get.toNamed("welcome-screen");
+
+                    //     }
+                    //   });
+                    // }
+
+                    // Get.snackbar("Error", "Please check your phone number");
                   }).catchError((e) {
-                    print(e);
+                    print(e.toString());
+                    Get.snackbar("Error", "Something went wrong");
+                    Get.toNamed("/");
                   });
-                  Get.toNamed("sensor");
                 })
           ],
         ),

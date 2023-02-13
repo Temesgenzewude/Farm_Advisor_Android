@@ -1,6 +1,7 @@
 import 'package:agino_client/presentation/dashboard/reset_gdd.dart';
 import 'package:agino_client/presentation/dashboard/statistics_one_.dart';
 import 'package:agino_client/presentation/firstTimeUser/newFarm.dart';
+import 'package:agino_client/presentation/firstTimeUser/welcome.dart';
 import 'package:agino_client/presentation/more/profile.dart';
 import 'package:agino_client/presentation/onboarding/home.dart';
 import 'package:agino_client/presentation/onboarding/signup.dart';
@@ -35,6 +36,7 @@ class RouteHelper {
   static const String fieldsPage = '/fields';
   static const String newFarm = '/new-farm';
   static const String newField = '/new-field';
+  static const String welcomeScreen = '/welcome-screen';
 
   static getInitial() => '$initial';
   static LoginPage() => '$login';
@@ -59,6 +61,7 @@ class RouteHelper {
   static String getAddSensorPage() => '$addSensorPage';
   static String getSensorPage() => '$sensorPage';
   static String getFieldsPage() => '$fieldsPage';
+  static String getWelcomePage() => '$welcomeScreen';
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: () => MyHomePage()),
@@ -101,6 +104,11 @@ class RouteHelper {
         name: resetAllGDD,
         page: () {
           return Container();
-        })
+        }),
+    GetPage(
+        name: welcomeScreen,
+        page: () {
+          return Welcome();
+        }),
   ];
 }
