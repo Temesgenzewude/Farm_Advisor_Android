@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SensorPage extends StatelessWidget {
-
   const SensorPage({super.key});
 
   @override
@@ -84,7 +83,7 @@ class SensorPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10)),
                                 backgroundColor: const Color(0xff275342)),
                             onPressed: () {
-                              Get.toNamed("");
+                              Get.toNamed("add-sensor");
                             },
                             child: const Text("ADD MY FIRST SENSOR")),
                       ),

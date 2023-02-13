@@ -1,15 +1,17 @@
+import 'package:agino_client/presentation/dashboard/reset_gdd.dart';
+import 'package:agino_client/presentation/dashboard/statistics_one_.dart';
+import 'package:agino_client/presentation/reusable_widgets/draw_graph.dart';
 import 'package:agino_client/routes_helper/routes_helpers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:agino_client/application/helpers/dependencies.dart' as dep;
+import 'firebase_options.dart';
 
-main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dep.init();
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
       ),
 
       // Getx routing
+
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
     );

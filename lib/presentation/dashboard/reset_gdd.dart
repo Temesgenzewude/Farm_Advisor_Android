@@ -131,7 +131,7 @@ class _ResetGDDState extends State<ResetGDD> {
                     color: Color(0xFF20382F),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 15,
                 ),
                 Text(
