@@ -1,42 +1,72 @@
+import 'package:agino_client/presentation/onboarding/verefication.dart';
 import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
+import 'package:agino_client/routes_helper/routes_helpers.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+  SignUp({super.key});
   @override
   State<SignUp> createState() => SignUpState();
 }
 
 class SignUpState extends State<SignUp> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  var isLoading = false;
   final countrypicker = const FlCountryCodePicker();
   bool isButtonActive = false;
   CountryCode? countryCode;
   TextEditingController phoneController = TextEditingController();
+  TextEditingController _codeController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  void register(String phoneNumber, BuildContext context) async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      timeout: const Duration(seconds: 60),
+      verificationCompleted: (AuthCredential authCredential) {},
+      verificationFailed: (FirebaseAuthException e) {
+        print(e.message);
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Verefication(
+                      verificationId: verificationId,
+                    )));
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        verificationId = verificationId;
+        print(verificationId);
+        print("Timout");
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text(
-          'SIGN UP',
-          style: TextStyle(
-              color: Color(0xFF5F676C),
-              fontSize: 14,
-              fontWeight: FontWeight.w500),
-        ),
-        backgroundColor: const Color(0xFFF7F7F7),
-        leading: GestureDetector(
-          child: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
-          onTap: () {
-            Navigator.pop(context);
-          },
+        title: Row(
+          children: [
+            GestureDetector(
+              child: const Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xFF5F676C),
+              ),
+              onTap: () {
+                // print("clicked");
+              },
+            ),
+            const TextWidget(
+                text: "SIGN UP",
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Colors.black)
+          ],
         ),
       ),
       body: Center(
@@ -44,10 +74,12 @@ class SignUpState extends State<SignUp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.all(10),
-              child:const TextWidget(text: "Sign up with your phone number", fontWeight: FontWeight.w400, fontSize: 20, color: Colors.black)
-
-            ),
+                margin: const EdgeInsets.all(10),
+                child: const TextWidget(
+                    text: "Sign up with your phone number",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20,
+                    color: Colors.black)),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Form(
@@ -63,8 +95,8 @@ class SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                       hintText: "Enter you phone number",
                       prefixIcon: Container(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 6),
                         margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: Row(mainAxisSize: MainAxisSize.min, children: [
                           GestureDetector(
@@ -125,8 +157,9 @@ class SignUpState extends State<SignUp> {
       bottomNavigationBar: BottomAppBar(
         child: InkWell(
           onTap: () {
-            Get.toNamed("phone-verification");
-            // print("clicked");
+            final code = countryCode?.dialCode ?? "+251";
+            final phoneNumber = code + phoneController.text;
+            register(phoneNumber, context);
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(15, 10, 15, 10),
@@ -138,15 +171,25 @@ class SignUpState extends State<SignUp> {
                   : Color(0xFF275342).withOpacity(0.5),
               borderRadius: BorderRadius.circular(5),
             ),
-            child: Center(
-              child: Text(
-                "Continue",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
+            child: isLoading
+                ? Container(
+                    width: 24,
+                    height: 24,
+                    padding: const EdgeInsets.all(2.0),
+                    child: const CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 3,
+                    ),
+                  )
+                : Center(
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
           ),
         ),
       ),

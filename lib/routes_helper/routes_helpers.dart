@@ -54,7 +54,8 @@ class RouteHelper {
 
   static String getHelpPage() => '$help';
   static String getTermsPage() => '$terms';
-  static String getPhoneVerificationPage() => '$verification';
+  static String getPhoneVerificationPage(String verificationId) =>
+      '$verification?verId=$verificationId';
   static String getAddSensorPage() => '$addSensorPage';
   static String getSensorPage() => '$sensorPage';
   static String getFieldsPage() => '$fieldsPage';
@@ -78,7 +79,15 @@ class RouteHelper {
         }),
     GetPage(name: resetGDD, page: (() => ResetGDD())),
     GetPage(name: terms, page: (() => Terms())),
-    GetPage(name: verification, page: (() => Verefication())),
+    GetPage(
+        name: verification,
+        page: (() {
+          var verifcationId = Get.arguments["verId"];
+
+          return Verefication(
+            verificationId: verification,
+          );
+        })),
     GetPage(name: sensorPage, page: (() => SensorPage())),
     GetPage(name: addSensorPage, page: (() => AddSensor())),
     GetPage(

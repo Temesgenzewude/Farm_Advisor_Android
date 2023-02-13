@@ -3,13 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:agino_client/application/helpers/dependencies.dart' as dep;
+import 'firebase_options.dart';
 
-main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dep.init();
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
