@@ -143,13 +143,10 @@ class _NewFieldState extends State<NewField> {
                             const Color.fromARGB(128, 39, 83, 66)),
                     onPressed: _isButtonActive
                         ? () {
-                            if (_formKey.currentState!.validate()) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SensorPage()));
-                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const SensorPage()));
                           }
                         : null,
                     child: const Text("ADD MY FIRST FIELD")))

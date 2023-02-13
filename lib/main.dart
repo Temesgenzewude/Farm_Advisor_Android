@@ -5,12 +5,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
-
 import 'firebase_options.dart';
+import 'package:agino_client/application/helpers/dependencies.dart' as dep;
 
 void main() async {
+  dep.init();
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -33,7 +32,8 @@ class MyApp extends StatelessWidget {
       ),
 
       // Getx routing
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.newFarm,
+
       getPages: RouteHelper.routes,
     );
   }

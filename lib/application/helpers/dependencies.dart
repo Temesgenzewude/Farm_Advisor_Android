@@ -27,5 +27,6 @@ Future<void> init() async {
   // controllers
   Get.lazyPut(() => AuthController(authRepo: Get.find()));
   Get.lazyPut(() => SensorController(sensorRepo: Get.find()));
+  
   Get.lazyPut(() => FarmController(farmRepo: Get.find()));
 }

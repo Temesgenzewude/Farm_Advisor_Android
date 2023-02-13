@@ -16,6 +16,8 @@ class AuthController extends GetxController implements GetxService {
     _isLoading = true;
 
     Response response = await authRepo.registration(signUpBody);
+    print("from auth controller");
+    print(response.statusCode);
     late ResponseModel responseModel;
     if (response.statusCode == 200) {
       authRepo.saveUserId(response.body['userId']);

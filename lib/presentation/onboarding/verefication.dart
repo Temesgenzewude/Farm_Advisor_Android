@@ -6,6 +6,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../application/auth/auth_controller.dart';
+import '../../domain/auth/signup_model.dart';
+
 class Verefication extends StatefulWidget {
   final String verificationId;
 
@@ -109,11 +112,13 @@ class VereficationState extends State<Verefication> {
                           print("Successfully signed up");
 
                           Get.toNamed("welcome-screen");
+                        } else {
+                          print("error while connecting to backend");
                         }
+                      }).catchError((err) {
+                        print(err);
                       });
                     }
-
-                    // Get.snackbar("Error", "Please check your phone number");
                   }).catchError((e) {
                     print(e.toString());
                     Get.snackbar("Error", "Something went wrong");

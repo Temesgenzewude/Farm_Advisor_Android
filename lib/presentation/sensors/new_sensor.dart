@@ -1,4 +1,4 @@
-import 'package:agino_client/presentation/reusable_widgets/googleMap.dart';
+import 'package:agino_client/presentation/reusable_widgets/custom_drop_down.dart';
 import 'package:agino_client/presentation/sensors/components/qr_view.dart';
 import 'package:agino_client/presentation/sensors/fields.dart';
 import "package:flutter/material.dart";
@@ -34,6 +34,13 @@ class _AddSensorState extends State<AddSensor> {
     mapController = controller;
   }
 
+  final farmItems = ['Farm1 name', 'Farm2 name', 'Farm3 name', 'Farm4 name'];
+  final fieldItems = [
+    'Field1 name',
+    'Field2 name',
+    'Field3 name',
+    'Field4 name'
+  ];
   List<String> months = [
     'January',
     'February',
@@ -123,6 +130,24 @@ class _AddSensorState extends State<AddSensor> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const Text("Farm",
+                            style: TextStyle(
+                                color: Color(0xff5f676c), fontSize: 12)),
+                        const SizedBox(height: 8),
+                        DropDownButton(
+                          items: farmItems,
+                          dropDownValue: 'Farm1 name',
+                        ),
+                        const SizedBox(height: 8),
+                        const Text("Field",
+                            style: TextStyle(
+                                color: Color(0xff5f676c), fontSize: 12)),
+                        const SizedBox(height: 8),
+                        DropDownButton(
+                          items: fieldItems,
+                          dropDownValue: "Field1 name",
+                        ),
+                        const SizedBox(height: 8),
                         const Text("Serial Number",
                             style: TextStyle(
                                 color: Color(0xff5f676c), fontSize: 12)),
