@@ -46,10 +46,7 @@ dependencies:
   flutter_svg: ^1.1.6
   firebase_core: ^2.5.0
   firebase_auth: ^4.2.2
-<<<<<<< HEAD
   integration_test: ^0.8.1
-=======
->>>>>>> 818eccc56cf4b4b94541b7947ad9a397c04032b8
 
 dev_dependencies:
   flutter_test:
