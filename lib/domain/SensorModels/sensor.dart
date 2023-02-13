@@ -5,22 +5,26 @@ class Sensor {
   final int fieldId;
   final String serialNo;
   final DateTime lastcommunication;
-  final int batteryStatus;
-  final int gdd;
+  final int? batteryStatus;
+  final int optimalGDD;
   final double long;
   final double lat;
-  final Enum state;
+  final DateTime? cuttingDateCalculated;
+  final DateTime? lastForcastDate;
+  final DateTime? lastCuttingDate;
 
   Sensor({
     required this.sensorId,
     required this.fieldId,
     required this.serialNo,
     required this.lastcommunication,
-    required this.batteryStatus,
-    required this.gdd,
+    this.batteryStatus,
+    required this.optimalGDD,
     required this.long,
     required this.lat,
-    required this.state,
+    this.cuttingDateCalculated,
+    this.lastForcastDate,
+    this.lastCuttingDate,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,10 +34,12 @@ class Sensor {
       'serialNo': serialNo,
       'lastcommunication': lastcommunication,
       'batteryStatus': batteryStatus,
-      'gdd': gdd,
+      'optimalGDD': optimalGDD,
       'long': long,
       'lat': lat,
-      'state': state,
+      'cuttingDateCalculated':cuttingDateCalculated,
+      'lastForcastDate':lastForcastDate,
+      'lastCuttingDate':lastCuttingDate
     };
   }
 
@@ -44,10 +50,12 @@ class Sensor {
       serialNo: map['serialNo'],
       lastcommunication: map['lastcommunication'],
       batteryStatus: map['batteryStatus'],
-      gdd: map['gdd'],
+      optimalGDD: map['gdd'],
       long: map['long'],
       lat: map['lat'],
-      state: map['state'],
+      cuttingDateCalculated: map['cuttingDateCalculated'],
+      lastForcastDate: map['lastForcastDate'],
+      lastCuttingDate: map['lastCuttingDate']
     );
   }
 

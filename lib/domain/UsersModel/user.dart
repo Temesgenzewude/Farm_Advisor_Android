@@ -1,38 +1,31 @@
 import 'dart:convert';
 
+import 'package:agino_client/domain/FarmModels/farm.dart';
+
 class User {
   final int userId;
-  final int name;
   final String phone;
-  final String email;
-  final String authId;
- 
+  final Farm? farm;
 
   User({
     required this.userId,
-    required this.name,
     required this.phone,
-    required this.email,
-    required this.authId,
+    this.farm
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'userId':userId,
-      'name': name,
+      'userId': userId,
       'phone': phone,
-      'email': email,
-      'authId': authId,
+      'farm':farm,
     };
   }
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
       userId: map['userId'],
-      name: map['name'],
       phone: map['phone'],
-      email: map['email'],
-      authId: map['authId'],
+      farm: map['farm'],
     );
   }
 
@@ -40,10 +33,3 @@ class User {
   // ignore: non_constant_identifier_names
   factory User.Json(String source) => User.fromMap(json.decode(source));
 }
-
-
-
-
-
-
-
