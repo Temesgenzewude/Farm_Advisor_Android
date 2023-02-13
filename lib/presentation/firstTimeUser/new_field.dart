@@ -1,6 +1,7 @@
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
 import 'package:agino_client/presentation/reusable_widgets/custom_drop_down.dart';
 import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
+import 'package:agino_client/presentation/sensors/add_sensor.dart';
 import 'package:flutter/material.dart';
 
 class NewField extends StatefulWidget {
@@ -11,9 +12,24 @@ class NewField extends StatefulWidget {
 }
 
 class _NewFieldState extends State<NewField> {
-  TextEditingController farmController = TextEditingController();
-
+  var _isButtonActive = false;
+  TextEditingController fieldNameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  void check() {
+    if (fieldNameController.text.isNotEmpty &&
+        locationController.text.isNotEmpty) {
+      setState(() {
+        _isButtonActive = true;
+      });
+    } else {
+      setState(() {
+        _isButtonActive = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,90 +56,104 @@ class _NewFieldState extends State<NewField> {
       body: Container(
         padding: const EdgeInsets.all(18.0),
         color: const Color.fromARGB(48, 247, 247, 247),
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(crossAxisAlignment: CrossAxisAlignment.start, 
-              children: [
-                const TextWidget(
-                  text: "Farm",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const DropDownButton(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const TextWidget(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const TextWidget(
                   text: "Field name",
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
-                  color: Colors.black,
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                TextFormField(
-                  controller: farmController,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: EdgeInsets.only(top: 10),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(7),
-                      ),
-                      borderSide: BorderSide.none,
+                  color: Colors.black),
+              const SizedBox(
+                height: 5,
+              ),
+              TextFormField(
+                controller: fieldNameController,
+                onEditingComplete: () {
+                  check();
+                },
+                decoration: const InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: EdgeInsets.only(top: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(7),
                     ),
-                    hintText: 'Enter field name',
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
+                    borderSide: BorderSide.none,
+                  ),
+                  hintText: 'Enter field name',
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const TextWidget(
-                    text: "Altitude above sea level",
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: Colors.black),
-                const SizedBox(
-                  height: 5,
-                ),
-                TextFormField(
-                  controller: farmController,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: EdgeInsets.only(top: 10),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(7),
-                      ),
-                      borderSide: BorderSide.none,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const TextWidget(
+                  text: "Altitude above sea level",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Colors.black),
+              const SizedBox(
+                height: 5,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                controller: locationController,
+                onEditingComplete: () {
+                  check();
+                },
+                validator: (value) {},
+                decoration: const InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: EdgeInsets.only(top: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(7),
                     ),
-                    hintText: 'Enter meters',
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                    ),
+                    borderSide: BorderSide.none,
+                  ),
+                  hintText: 'Enter meters',
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
                   ),
                 ),
-              ]),
-              CustomButton(
-                  color: const Color.fromARGB(255, 4, 90, 57),
-                  text: "Create New Field",
-                  onTap: () {}),
-            ],
-          ),
+              ),
+            ]),
+            Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+                width: double.infinity,
+                height: 80,
+                decoration: const BoxDecoration(),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9),
+                        ),
+                        backgroundColor: const Color(0xff275342),
+                        disabledForegroundColor: const Color(0xffffffff),
+                        disabledBackgroundColor:
+                            const Color.fromARGB(128, 39, 83, 66)),
+                    onPressed: _isButtonActive
+                        ? () {
+                            if (_formKey.currentState!.validate()) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SensorPage()));
+                            }
+                          }
+                        : null,
+                    child: const Text("ADD MY FIRST FIELD")))
+          ],
         ),
       ),
     );

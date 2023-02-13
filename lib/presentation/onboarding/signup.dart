@@ -32,6 +32,9 @@ class SignUpState extends State<SignUp> {
         print(e.message);
       },
       codeSent: (String verificationId, int? resendToken) {
+        setState(() {
+          isLoading = false;
+        });
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -152,12 +155,34 @@ class SignUpState extends State<SignUp> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 50,
+            ),
+            Center(
+                child: isLoading
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: CircularProgressIndicator(),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text("please wait for sms")
+                        ],
+                      )
+                    : null)
           ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: InkWell(
           onTap: () {
+            setState(() {
+              isLoading = true;
+            });
             final code = countryCode?.dialCode ?? "+251";
             final phoneNumber = code + phoneController.text;
             register(phoneNumber, context);
@@ -172,25 +197,15 @@ class SignUpState extends State<SignUp> {
                   : Color(0xFF275342).withOpacity(0.5),
               borderRadius: BorderRadius.circular(5),
             ),
-            child: isLoading
-                ? Container(
-                    width: 24,
-                    height: 24,
-                    padding: const EdgeInsets.all(2.0),
-                    child: const CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 3,
-                    ),
-                  )
-                : Center(
-                    child: Text(
-                      "Continue",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+            child: Center(
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ),
       ),

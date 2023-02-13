@@ -7,6 +7,7 @@ import 'package:agino_client/presentation/onboarding/home.dart';
 import 'package:agino_client/presentation/onboarding/signup.dart';
 import 'package:agino_client/presentation/onboarding/termsandconditions.dart';
 import 'package:agino_client/presentation/onboarding/verefication.dart';
+import 'package:agino_client/presentation/reusable_widgets/googleMap.dart';
 import 'package:agino_client/presentation/sensors/add_sensor.dart';
 import 'package:agino_client/presentation/sensors/fields.dart';
 import 'package:agino_client/presentation/sensors/new_sensor.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../presentation/firstTimeUser/new_field.dart';
+import '../presentation/firstTimeUser/searchLocation.dart';
 
 class RouteHelper {
   static const String initial = "/";
@@ -64,7 +66,7 @@ class RouteHelper {
   static String getWelcomePage() => '$welcomeScreen';
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => MyHomePage()),
+    GetPage(name: initial, page: () => NewField()),
     GetPage(
         name: statistics,
         page: () {
