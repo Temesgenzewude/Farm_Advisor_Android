@@ -5,7 +5,6 @@ class Field {
   final int farmId;
   final String name;
   final int altitude;
-  final String polygon;
  
 
   Field({
@@ -13,7 +12,6 @@ class Field {
     required this.farmId,
     required this.name,
     required this.altitude,
-    required this.polygon,
   });
 
   Map<String, dynamic> toMap() {
@@ -22,7 +20,6 @@ class Field {
       'farmId': farmId,
       'name': name,
       'altitude': altitude,
-      'polygon': polygon,
     };
   }
 
@@ -32,7 +29,6 @@ class Field {
       farmId: map['farmId'],
       name: map['name'],
       altitude: map['altitude'],
-      polygon: map['polygon'],
     );
   }
 
