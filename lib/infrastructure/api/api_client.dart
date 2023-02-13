@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class ApiClient extends GetConnect implements GetxService {
-  late String token;
+  late String userId;
 
   final String appBaseUrl;
   late Map<String, String> _mainHeaders;
@@ -9,10 +9,17 @@ class ApiClient extends GetConnect implements GetxService {
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl;
     timeout = Duration(seconds: 30);
-    token = token;
+    // token = userId;
     _mainHeaders = {
       'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer $token'
+      // 'Authorization': 'Bearer $userId'
+    };
+  }
+
+  void updateHeader(String userId) {
+    _mainHeaders = {
+      'Content-Type': 'application/json; charset=UTF-8',
+      // 'Authorization': 'Bearer $userId'
     };
   }
 

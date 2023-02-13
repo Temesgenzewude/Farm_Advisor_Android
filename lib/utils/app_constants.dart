@@ -8,5 +8,7 @@ class AppConstants {
 
   static const String DELETE_SENSOR_END_POINT = "/sensors/1";
 
+  static const String POST_USER_END_POINT = "/users";
+
   static const String TOKEN = "someTokenToBeChangedLater1234567";
 }
