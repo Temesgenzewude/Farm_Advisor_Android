@@ -1,3 +1,5 @@
+import 'package:agino_client/application/FramControllers/farm_controller.dart';
+import 'package:agino_client/application/SensorController/sensor_controller.dart';
 import 'package:agino_client/routes_helper/routes_helpers.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,6 @@ void main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<SensorController>().getSensors();
+    Get.find<FarmController>().getFarms();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Agino Farm',
@@ -31,5 +34,4 @@ class MyApp extends StatelessWidget {
       getPages: RouteHelper.routes,
     );
   }
-  
 }

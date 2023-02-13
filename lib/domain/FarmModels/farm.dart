@@ -9,6 +9,7 @@ class Farm {
   String? longitude;
   String? userId;
   List<Field>? farmfields;
+  
 
   Farm(
       {required this.farmId,

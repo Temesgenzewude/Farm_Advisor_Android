@@ -16,6 +16,7 @@ class SignUpState extends State<SignUp> {
   FirebaseAuth auth = FirebaseAuth.instance;
   var isLoading = false;
   final countrypicker = const FlCountryCodePicker();
+  
   bool isButtonActive = false;
   CountryCode? countryCode;
   TextEditingController phoneController = TextEditingController();
