@@ -39,7 +39,7 @@ class AppConstants {
   static const String GET_NOTIFICATION_END_POINT = "/notifications";
   static const String POST_NOTIFICATION_POINT = "/notifications";
 
-  static const String PUT_NOTIFICATION_END_POINT = "/notifications/1";
+  static const String PUT_NOTIFICATION_END_POINT = "/notifications/2";
 
   static const String DELETE_NOTIFICATION_END_POINT = "/notifications/1";
 
