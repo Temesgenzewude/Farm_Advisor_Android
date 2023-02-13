@@ -40,88 +40,90 @@ class _NewFieldState extends State<NewField> {
       body: Container(
         padding: const EdgeInsets.all(18.0),
         color: const Color.fromARGB(48, 247, 247, 247),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, 
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const TextWidget(
-                text: "Farm",
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Colors.black,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const DropDownButton(),
-              const SizedBox(
-                height: 20,
-              ),
-              const TextWidget(
-                text: "Field name",
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Colors.black,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              TextFormField(
-                controller: farmController,
-                decoration: const InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: EdgeInsets.only(top: 10),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(7),
-                    ),
-                    borderSide: BorderSide.none,
-                  ),
-                  hintText: 'Enter field name',
-                  hintStyle: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const TextWidget(
-                  text: "Altitude above sea level",
+              Column(crossAxisAlignment: CrossAxisAlignment.start, 
+              children: [
+                const TextWidget(
+                  text: "Farm",
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
-                  color: Colors.black),
-              const SizedBox(
-                height: 5,
-              ),
-              TextFormField(
-                controller: farmController,
-                decoration: const InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: EdgeInsets.only(top: 10),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(7),
+                  color: Colors.black,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const DropDownButton(),
+                const SizedBox(
+                  height: 20,
+                ),
+                const TextWidget(
+                  text: "Field name",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                TextFormField(
+                  controller: farmController,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsets.only(top: 10),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(7),
+                      ),
+                      borderSide: BorderSide.none,
                     ),
-                    borderSide: BorderSide.none,
-                  ),
-                  hintText: 'Enter meters',
-                  hintStyle: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                    hintText: 'Enter field name',
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
-              ),
-            ]),
-            CustomButton(
-                color: const Color.fromARGB(255, 4, 90, 57),
-                text: "Create New Field",
-                onTap: () {}),
-          ],
+                const SizedBox(
+                  height: 20,
+                ),
+                const TextWidget(
+                    text: "Altitude above sea level",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                    color: Colors.black),
+                const SizedBox(
+                  height: 5,
+                ),
+                TextFormField(
+                  controller: farmController,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: EdgeInsets.only(top: 10),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(7),
+                      ),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: 'Enter meters',
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ]),
+              CustomButton(
+                  color: const Color.fromARGB(255, 4, 90, 57),
+                  text: "Create New Field",
+                  onTap: () {}),
+            ],
+          ),
         ),
       ),
     );
