@@ -1,4 +1,5 @@
 import 'package:agino_client/domain/SensorModels/sensor.dart';
+import 'package:agino_client/domain/responseModel/response_model.dart';
 import 'package:agino_client/infrastructure/sensor/sensor_repo.dart';
 import 'package:get/get.dart';
 
@@ -27,6 +28,29 @@ class SensorController extends GetxController implements GetxService {
       _isLoading = true;
 
       update();
-    } else {}
+    } else {
+      
+    }
+  }
+
+  Future<ResponseModel> postSensor(Sensor sensorBody) async {
+    _isLoading = true;
+    Response response = await sensorRepo.postSensor(sensorBody);
+
+    ResponseModel responseModel;
+
+    if (response.statusCode == 200) {
+      responseModel = ResponseModel(true, "Successfully created sensor");
+
+      update();
+      _isLoading = false;
+      return responseModel;
+    } else {
+      responseModel = ResponseModel(false, "Couldn't create the sensor");
+
+      _isLoading = false;
+
+      return responseModel;
+    }
   }
 }

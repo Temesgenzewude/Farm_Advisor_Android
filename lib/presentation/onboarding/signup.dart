@@ -6,6 +6,9 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../application/auth/auth_controller.dart';
+import '../../domain/auth/signup_model.dart';
+
 class SignUp extends StatefulWidget {
   SignUp({super.key});
   @override
@@ -16,6 +19,7 @@ class SignUpState extends State<SignUp> {
   FirebaseAuth auth = FirebaseAuth.instance;
   var isLoading = false;
   final countrypicker = const FlCountryCodePicker();
+  
   bool isButtonActive = false;
   CountryCode? countryCode;
   TextEditingController phoneController = TextEditingController();
@@ -31,6 +35,9 @@ class SignUpState extends State<SignUp> {
         print(e.message);
       },
       codeSent: (String verificationId, int? resendToken) {
+        setState(() {
+          isLoading = false;
+        });
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -151,15 +158,52 @@ class SignUpState extends State<SignUp> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 50,
+            ),
+            Center(
+                child: isLoading
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            height: 35,
+                            width: 35,
+                            child: CircularProgressIndicator(),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text("please wait for sms")
+                        ],
+                      )
+                    : null)
           ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: InkWell(
           onTap: () {
+            setState(() {
+              isLoading = true;
+            });
             final code = countryCode?.dialCode ?? "+251";
             final phoneNumber = code + phoneController.text;
-            register(phoneNumber, context);
+            // register(phoneNumber, context);
+            var authController = Get.find<AuthController>();
+            SignUpBody signUpBody = SignUpBody(phoneNumber: phoneNumber);
+            authController.registration(signUpBody).then((status) {
+              print(status.message);
+              if (status.isSuccess) {
+                print("Successfully signed up");
+
+                Get.toNamed("welcome-screen");
+              } else {
+                print(status.message);
+                print("error while connecting to backend");
+              }
+            }).catchError((err) {
+              print(err);
+            });
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(15, 10, 15, 10),
@@ -171,25 +215,15 @@ class SignUpState extends State<SignUp> {
                   : Color(0xFF275342).withOpacity(0.5),
               borderRadius: BorderRadius.circular(5),
             ),
-            child: isLoading
-                ? Container(
-                    width: 24,
-                    height: 24,
-                    padding: const EdgeInsets.all(2.0),
-                    child: const CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 3,
-                    ),
-                  )
-                : Center(
-                    child: Text(
-                      "Continue",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+            child: Center(
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ),
       ),

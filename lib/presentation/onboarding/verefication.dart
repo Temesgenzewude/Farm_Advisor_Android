@@ -1,8 +1,13 @@
+import 'package:agino_client/application/auth/auth_controller.dart';
+import 'package:agino_client/domain/auth/signup_model.dart';
 import 'package:agino_client/presentation/reusable_widgets/custom_button.dart';
 import 'package:agino_client/presentation/reusable_widgets/custome_text_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../application/auth/auth_controller.dart';
+import '../../domain/auth/signup_model.dart';
 
 class Verefication extends StatefulWidget {
   final String verificationId;
@@ -91,15 +96,34 @@ class VereficationState extends State<Verefication> {
                 text: "Continue",
                 onTap: () {
                   FirebaseAuth auth = FirebaseAuth.instance;
-                  final smsCode = smsController.text;
+                  final smsCode = smsController.text.trim();
                   final _credential = PhoneAuthProvider.credential(
                       verificationId: verificationId, smsCode: smsCode);
                   auth.signInWithCredential(_credential).then((result) {
-                    Get.toNamed("sensor");
+                    print(result.user!.phoneNumber);
+                    Get.toNamed("welcome-screen");
+
+                    var phone = result.user!.phoneNumber;
+                    if (phone != null) {
+                      var authController = Get.find<AuthController>();
+                      SignUpBody signUpBody = SignUpBody(phoneNumber: phone);
+                      authController.registration(signUpBody).then((status) {
+                        if (status.isSuccess) {
+                          print("Successfully signed up");
+
+                          Get.toNamed("welcome-screen");
+                        } else {
+                          print("error while connecting to backend");
+                        }
+                      }).catchError((err) {
+                        print(err);
+                      });
+                    }
                   }).catchError((e) {
-                    print(e);
+                    print(e.toString());
+                    Get.snackbar("Error", "Something went wrong");
+                    Get.toNamed("/");
                   });
-                  Get.toNamed("sensor");
                 })
           ],
         ),

@@ -1,34 +1,52 @@
 import 'package:flutter/material.dart';
 
 class DropDownButton extends StatefulWidget {
-  const DropDownButton({super.key});
+  List<String> items;
+  String dropDownValue;
+  DropDownButton({super.key, required this.items, required this.dropDownValue});
   @override
-  State<DropDownButton> createState() => _DropDownButtonState();
+  State<DropDownButton> createState() =>
+      _DropDownButtonState(items, dropDownValue);
 }
 
 class _DropDownButtonState extends State<DropDownButton> {
-  final items = ['Farm1 name', 'Farm2 name', 'Farm3 name', 'Farm4 name'];
-  String? value ;
+  List<String> items;
+  // final items = ['Farm1 name', 'Farm2 name', 'Farm3 name', 'Farm4 name'];
+  String dropDownValue;
+
+  _DropDownButtonState(this.items, this.dropDownValue);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(),
-      child: DropdownButton<String>(
-        icon: const Icon(Icons.arrow_drop_down,color: Colors.black,),
-        iconSize: 36,
-        value: value,
-        isExpanded: true,
-        items: items.map(buildMenuItem).toList(),
-        onChanged: (value) => setState(() => this.value = value),
+      height: 50,
+      width: double.infinity,
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+            alignment: AlignmentDirectional.centerEnd,
+            elevation: 3,
+            style: const TextStyle(
+              color: Color(0xff20382F),
+              fontSize: 18,
+            ),
+            value: dropDownValue,
+            icon: const Padding(
+                padding: EdgeInsets.only(left: 28),
+                child:
+                    Icon(Icons.keyboard_arrow_down, color: Color(0xff20382F))),
+            items: items.map((item) {
+              return DropdownMenuItem(value: item, child: Text(item));
+            }).toList(),
+            onChanged: (value) {
+              setState(() {
+                dropDownValue = value!;
+              });
+            }),
       ),
     );
   }
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-        value: item,
-        child: Text(
-          item,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-        ),
-      );
 }

@@ -24,9 +24,9 @@ class _AddFarmFieldState extends State<AddFarmField> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: 45,
-                      width: 45,
-                      child: Image.asset("assets/farm.png"),
+                      height: 10,
+                      width: 10,
+                      child: Image.asset("assets/images/farm.png"),
                     ),
                     const SizedBox(
                       width: 15,
@@ -51,9 +51,9 @@ class _AddFarmFieldState extends State<AddFarmField> {
             height: 20,
           ),
           SizedBox(
-            height: 203,
-            width: 203,
-            child: Image.asset("assets/farm.png"),
+            height: 45,
+            width: 45,
+            child: Image.asset("assets/images/farm.png"),
           ),
           const SizedBox(
             height: 20,
