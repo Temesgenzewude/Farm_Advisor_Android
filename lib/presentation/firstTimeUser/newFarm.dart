@@ -239,7 +239,7 @@ class _NewFarmState extends State<NewFarm> {
                   color: const Color.fromARGB(255, 4, 90, 57),
                   text: "Create new farm",
                   onTap: () {
-                    postFarmData();
+                    Get.toNamed("new-field");
                   }),
             ],
           ),
