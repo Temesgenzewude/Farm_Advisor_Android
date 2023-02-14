@@ -11,7 +11,7 @@ import '../../infrastructure/auth/auth_repo.dart';
 class FieldController extends GetxController implements GetxService {
   final FieldRepo fieldRepo;
 
-  FieldController(this.fieldRepo);
+  FieldController({required this.fieldRepo});
   bool _isLoading = false;
   List<Field> _fields = [];
 

@@ -33,7 +33,7 @@ class _NewFarmState extends State<NewFarm> {
       String name = farmController.text.trim();
       String location = locationController.text.trim();
 
-      if (name.isNotEmpty && location.isNotEmpty) {
+      if (name.isNotEmpty) {
         var farmController = Get.find<FarmController>();
         var sharedPreferences = Get.find<SharedPreferences>();
 
@@ -41,13 +41,14 @@ class _NewFarmState extends State<NewFarm> {
             name: name,
             latitude: lat,
             longitude: long,
-            userId: "0dc68a1a-8d1b-4760-8004-08db0dff878d");
+            userId: "c24df0b5-14a2-4d33-838e-08db0e67ad94");
         farmController.postFarm(farm).then((response) {
           if (response.isSuccess) {
             print("Successfully created farm");
             Get.toNamed("new-field");
           } else {
-            print(response.message);
+            print("From Create farm");
+            print(response.message.body);
           }
         }).catchError((error) {
           print(error + "While creating farm");

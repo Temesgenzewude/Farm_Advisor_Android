@@ -8,7 +8,7 @@ class ApiClient extends GetConnect implements GetxService {
 
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl;
-    timeout = Duration(seconds: 30);
+    timeout = Duration(seconds: 60);
     // token = userId;
     _mainHeaders = {
       'Content-Type': 'application/json; charset=UTF-8',
@@ -34,9 +34,11 @@ class ApiClient extends GetConnect implements GetxService {
 
   Future<Response> postData(String url, dynamic body) async {
     try {
-      Response response = await post(url, body, headers: _mainHeaders);
+      Response response = await post(url, body);
+      print("From client" + response.body.toString());
       return response;
     } catch (e) {
+      print("Error from client" + e.toString());
       return Response(statusCode: 406, statusText: e.toString());
     }
   }

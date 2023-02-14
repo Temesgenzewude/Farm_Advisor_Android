@@ -188,22 +188,8 @@ class SignUpState extends State<SignUp> {
             });
             final code = countryCode?.dialCode ?? "+251";
             final phoneNumber = code + phoneController.text;
-            // register(phoneNumber, context);
-            var authController = Get.find<AuthController>();
-            SignUpBody signUpBody = SignUpBody(phoneNumber: phoneNumber);
-            authController.registration(signUpBody).then((status) {
-              print(status.message);
-              if (status.isSuccess) {
-                print("Successfully signed up");
-
-                Get.toNamed("welcome-screen");
-              } else {
-                print(status.message);
-                print("error while connecting to backend");
-              }
-            }).catchError((err) {
-              print(err);
-            });
+            register(phoneNumber, context);
+           
           },
           child: Container(
             margin: EdgeInsets.fromLTRB(15, 10, 15, 10),

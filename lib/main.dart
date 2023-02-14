@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
 
       // Getx routing
-      initialRoute: RouteHelper.newFarm,
+      initialRoute: RouteHelper.initial,
 
       getPages: RouteHelper.routes,
     );

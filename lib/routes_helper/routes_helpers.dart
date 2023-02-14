@@ -64,7 +64,7 @@ class RouteHelper {
   static String getWelcomePage() => '$welcomeScreen';
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => NewFarm()),
+    GetPage(name: initial, page: () => MyHomePage()),
     GetPage(
         name: statistics,
         page: () {

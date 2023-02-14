@@ -138,23 +138,23 @@ class _FieldsState extends State<Fields> {
                             height: 10,
                           ),
 
-                          ListView.builder(
-                            itemCount: fieldController.fieldList.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  FieldTile(
-                                      fieldName:
-                                          fieldController.fieldList[index].name,
-                                      currentGdd: fieldController
-                                          .fieldList[index].currentGDD
-                                          .toString(),
-                                      message:
-                                          'your cutting date is ${fieldController.fieldList[index].cuttingDateEstimated}')
-                                ],
-                              );
-                            },
-                          )
+                          // ListView.builder(
+                          //   itemCount: fieldController.fieldList.length,
+                          //   itemBuilder: (context, index) {
+                          //     return Column(
+                          //       children: [
+                          //         FieldTile(
+                          //             fieldName:
+                          //                 fieldController.fieldList[index].name,
+                          //             currentGdd: fieldController
+                          //                 .fieldList[index].currentGDD
+                          //                 .toString(),
+                          //             message:
+                          //                 'your cutting date is ${fieldController.fieldList[index].cuttingDateEstimated}')
+                          //       ],
+                          //     );
+                          //   },
+                          // )
                         ],
                       )),
             )));
