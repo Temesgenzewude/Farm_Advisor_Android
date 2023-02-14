@@ -1,7 +1,10 @@
+import 'package:agino_client/application/FieldController/field_controller.dart';
+import 'package:agino_client/application/FramControllers/farm_controller.dart';
 import 'package:agino_client/presentation/reusable_widgets/custom_drop_down.dart';
 import 'package:agino_client/presentation/sensors/components/qr_view.dart';
 import 'package:agino_client/presentation/sensors/fields.dart';
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -13,6 +16,8 @@ class AddSensor extends StatefulWidget {
 }
 
 class _AddSensorState extends State<AddSensor> {
+  var farmController = Get.find<FarmController>();
+
   GoogleMapController? mapController; //contrller for Google map
   CameraPosition? cameraPosition;
   LatLng startLocation = LatLng(8.990152, 38.98368);
@@ -108,6 +113,7 @@ class _AddSensorState extends State<AddSensor> {
 
   @override
   Widget build(BuildContext context) {
+    var farm = farmController.farms[0];
     return Scaffold(
         appBar: AppBar(
             backgroundColor: const Color.fromARGB(255, 247, 247, 247),
@@ -243,7 +249,6 @@ class _AddSensorState extends State<AddSensor> {
                           },
                           child: Container(
                             height: 300,
-
                             child: Stack(children: [
                               GoogleMap(
                                 //Map widget from google_maps_flutter package
@@ -288,22 +293,6 @@ class _AddSensorState extends State<AddSensor> {
                                 ),
                               ),
                             ]),
-                            // child: GoogleMap(
-                            //   onTap: (LatLng coordinate) {
-                            //     mapController.animateCamera(
-                            //         CameraUpdate.newLatLng(coordinate));
-
-                            //     setState(() {
-                            //       _locationController.text =
-                            //           "${coordinate.latitude.toStringAsPrecision(7)} ${coordinate.longitude.toStringAsPrecision(7)}";
-                            //     });
-                            //   },
-                            //   onMapCreated: _onMapCreated,
-                            //   initialCameraPosition: CameraPosition(
-                            //     target: _center,
-                            //     zoom: 11.0,
-                            //   ),
-                            // ),
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -441,10 +430,7 @@ class _AddSensorState extends State<AddSensor> {
                       onPressed: _isButtonActive
                           ? () {
                               if (_formKey.currentState!.validate()) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Fields()));
+                                Get.toNamed('fields');
                               }
                             }
                           : null,

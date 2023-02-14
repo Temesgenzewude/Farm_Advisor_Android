@@ -3,17 +3,15 @@ import 'dart:convert';
 import 'package:agino_client/domain/FieldModel/field.dart';
 
 class Farm {
-  int? farmId;
+  String? farmId;
   String? name;
   String? latitude;
   String? longitude;
   String? userId;
   List<Field>? farmfields;
-  
 
   Farm(
-      { this.farmId,
-
+      {this.farmId,
       required this.name,
       required this.latitude,
       required this.longitude,

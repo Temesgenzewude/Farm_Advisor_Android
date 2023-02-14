@@ -21,11 +21,10 @@ class AuthController extends GetxController implements GetxService {
     late ResponseModel responseModel;
     if (response.statusCode == 200) {
       authRepo.saveUserId(response.body['userId']);
-      
 
-      responseModel = ResponseModel(true, response.body['userId']);
+      responseModel = ResponseModel(true, response);
     } else {
-      responseModel = ResponseModel(false, response.statusText!);
+      responseModel = ResponseModel(false, response);
     }
 
     _isLoading = false;

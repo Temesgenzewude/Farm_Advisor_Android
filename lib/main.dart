@@ -1,3 +1,4 @@
+import 'package:agino_client/application/FieldController/field_controller.dart';
 import 'package:agino_client/application/FramControllers/farm_controller.dart';
 import 'package:agino_client/application/SensorController/sensor_controller.dart';
 import 'package:agino_client/routes_helper/routes_helpers.dart';
@@ -9,9 +10,8 @@ import 'firebase_options.dart';
 import 'package:agino_client/application/helpers/dependencies.dart' as dep;
 
 void main() async {
-  dep.init();
   WidgetsFlutterBinding.ensureInitialized();
-
+  dep.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<SensorController>().getSensors();
     Get.find<FarmController>().getFarms();
+    Get.find<FieldController>().getFields();
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Agino Farm',
