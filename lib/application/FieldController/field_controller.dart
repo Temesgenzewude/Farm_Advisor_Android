@@ -3,12 +3,9 @@ import 'package:agino_client/domain/FieldModel/field.dart';
 import 'package:agino_client/domain/responseModel/response_model.dart';
 import 'package:agino_client/infrastructure/field/field_repo.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-import '../../infrastructure/auth/auth_repo.dart';
-
-class FieldController extends GetxController implements GetxService {
+class FieldController extends GetxController {
   final FieldRepo fieldRepo;
 
   FieldController({required this.fieldRepo});

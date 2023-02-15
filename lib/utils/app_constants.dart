@@ -40,6 +40,7 @@ class AppConstants {
   static const String PUT_NOTIFICATION_END_POINT = "/notifications/1";
 
   static const String DELETE_NOTIFICATION_END_POINT = "/notifications/1";
+  static const String GET_DASHBOARD_END_POINT = "/farms/dashbaord";
 
   static const String USERID = "someTokenToBeChangedLater1234567";
 }
