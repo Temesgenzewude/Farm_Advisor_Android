@@ -1,4 +1,6 @@
+import 'package:agino_client/application/DashboardController/dashbaordController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
@@ -20,6 +22,10 @@ class DrawGraph extends StatefulWidget {
 class _DrawGraphState extends State<DrawGraph> {
   @override
   Widget build(BuildContext context) {
+    
+    var dashboardConroller = Get.find<DashboardController>();
+
+    
     final List<ChartData> _chartData = [
       ChartData(DateTime(2015, 5, 1), 35),
       ChartData(DateTime(2015, 5, 2), 31),
@@ -30,6 +36,7 @@ class _DrawGraphState extends State<DrawGraph> {
       ChartData(DateTime(2015, 5, 7), 5),
       ChartData(DateTime(2015, 5, 8), 20),
     ];
+
     return Container(
       padding: const EdgeInsets.all(5),
       width: MediaQuery.of(context).size.width,

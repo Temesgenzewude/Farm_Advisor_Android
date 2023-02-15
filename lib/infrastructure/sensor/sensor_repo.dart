@@ -11,6 +11,7 @@ class SensorRepo extends GetxService {
   Future<Response> getSensors(String fieldId) async {
     return await apiClient
         .getData(AppConstants.GET_SENSORS_END_POINT + fieldId);
+        
   }
 
   Future<Response> postSensor(Sensor sensor) async {

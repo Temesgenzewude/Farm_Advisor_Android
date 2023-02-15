@@ -1,13 +1,17 @@
+import 'package:agino_client/application/DashboardController/dashbaordController.dart';
+import 'package:get/get.dart';
+
 class ChartData {
   ChartData(this.x, this.y);
   final DateTime x;
   final double? y;
+  var statistic = Get.find<DashboardController>().statistics;
 
   static List<ChartData> getChartData() {
     final List<ChartData> chartData = [
-      ChartData(DateTime(2023, 2, 20), 28),
-      
 
+     
+      ChartData(DateTime(2023, 2, 20), 28),
       ChartData(DateTime(2023, 3, 21), 9),
       ChartData(DateTime(2023, 4, 22), 25),
       ChartData(DateTime(2023, 5, 23), 20),

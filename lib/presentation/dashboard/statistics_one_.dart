@@ -1,9 +1,11 @@
+import 'package:agino_client/application/DashboardController/dashbaordController.dart';
 import 'package:agino_client/presentation/reusable_widgets/dashboard_custome_appbar.dart';
 import 'package:agino_client/presentation/reusable_widgets/date_picker.dart';
 import 'package:agino_client/presentation/reusable_widgets/draw_graph.dart';
 import 'package:agino_client/presentation/reusable_widgets/popup_menu.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StatisticsOne extends StatefulWidget {
@@ -14,8 +16,16 @@ class StatisticsOne extends StatefulWidget {
 }
 
 class _StatisticsOneState extends State<StatisticsOne> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
+    Get.find<DashboardController>().getDashboardData().then((result) {
+      if (result.isSuccess) {
+        setState(() {
+          this.isLoading = true;
+        });
+      }
+    });
     return Scaffold(
       appBar: const DashBoardCustomAppBar(),
       body: Container(
@@ -303,7 +313,6 @@ class _StatisticsOneState extends State<StatisticsOne> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Stack(
-                                          
                                             alignment:
                                                 AlignmentDirectional.center,
                                             children: [
@@ -618,7 +627,17 @@ class _StatisticsOneState extends State<StatisticsOne> {
                                 color: const Color(0xFF20382F)),
                           ),
                         ),
-                        const DrawGraph(),
+                        isLoading
+                            ? DrawGraph()
+                            : Column(
+                                children: [
+                                  CircularProgressIndicator(
+                                    value: 0.3,
+                                    color: Colors.greenAccent, //<-- SEE HERE
+                                    backgroundColor: Colors.grey, //<-- SEE HERE
+                                  ),
+                                ],
+                              ),
                         Container(
                           margin: const EdgeInsets.only(
                               left: 20, right: 20, top: 30, bottom: 10),
@@ -632,39 +651,17 @@ class _StatisticsOneState extends State<StatisticsOne> {
                                 color: const Color(0xFF20382F)),
                           ),
                         ),
-                        const PrecipitationGraph(),
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 20, right: 20, top: 30, bottom: 10),
-                          width: MediaQuery.of(context).size.width,
-                          child: Text(
-                            "Snow Depth",
-                            style: GoogleFonts.roboto(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.normal,
-                                color: const Color(0xFF20382F)),
-                          ),
-                        ),
-                        const SnowGraph(),
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 20, right: 20, top: 30, bottom: 10),
-                          width: MediaQuery.of(context).size.width,
-                          child: Text(
-                            "Wind",
-                            style: GoogleFonts.roboto(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.normal,
-                                color: const Color(0xFF20382F)),
-                          ),
-                        ),
-                        const WindGraph(),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.3,
-                        ),
+                        isLoading
+                            ? PrecipitationGraph()
+                            : Column(
+                                children: [
+                                  CircularProgressIndicator(
+                                    value: 0.3,
+                                    color: Colors.greenAccent, //<-- SEE HERE
+                                    backgroundColor: Colors.grey, //<-- SEE HERE
+                                  ),
+                                ],
+                              ),
                       ],
                     ),
                   ]),

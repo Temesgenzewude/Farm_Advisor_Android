@@ -9,7 +9,7 @@ class FieldRepo extends GetxService {
   FieldRepo({required this.apiClient});
 
   Future<Response> getFields(String farmID) async {
-    return await apiClient.getData(AppConstants.GET_FIELD_END_POINT + farmID);
+    return await apiClient.getData(AppConstants.GET_FIELD_END_POINT);
   }
 
   Future<Response> postField(Field field) async {

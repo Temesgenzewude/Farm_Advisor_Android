@@ -4,7 +4,6 @@ import 'package:agino_client/domain/FieldModel/field.dart';
 
 class Farm {
   String? farmId;
-
   String? name;
   String? latitude;
   String? longitude;

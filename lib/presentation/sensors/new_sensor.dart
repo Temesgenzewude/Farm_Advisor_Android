@@ -121,9 +121,10 @@ class _AddSensorState extends State<AddSensor> {
   Widget build(BuildContext context) {
     Get.find<FarmController>().getFarms();
     var farms = Get.find<FarmController>().farms;
-    Get.find<FieldController>().getFields(farms[0].farmId!);
+    Get.find<FieldController>().getFields();
+
     print("Fields for farm ");
-    var fields = Get.find<FieldController>().fields;
+    var fields = Get.find<FieldController>();
 
     return Scaffold(
         appBar: AppBar(
@@ -161,8 +162,8 @@ class _AddSensorState extends State<AddSensor> {
                                 color: Color(0xff5f676c), fontSize: 12)),
                         const SizedBox(height: 8),
                         DropDownButton(
-                          items: fields.map((field) => field.name).toList(),
-                          dropDownValue: fields[0].name,
+                          items: fieldItems,
+                          dropDownValue: "field 1",
                         ),
                         const SizedBox(height: 8),
                         const Text("Serial Number",

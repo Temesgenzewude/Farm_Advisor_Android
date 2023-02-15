@@ -2,5 +2,5 @@ projectKey=FarmAdvisorAndroid:Key1
 serverUrl=http://localhost:9000
 serverVersion=9.6.1.59531
 dashboardUrl=http://localhost:9000/dashboard?id=FarmAdvisorAndroid%3AKey1
-ceTaskId=AYZUXsgtzrvPf6MiOHLJ
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYZUXsgtzrvPf6MiOHLJ
+ceTaskId=AYZVFhZmgIaPzx1VzZXu
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYZVFhZmgIaPzx1VzZXu

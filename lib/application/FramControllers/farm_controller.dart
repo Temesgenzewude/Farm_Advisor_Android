@@ -44,10 +44,11 @@ class FarmController extends GetxController {
     Response response = await farmRepo.postFarm(farmBody);
 
     ResponseModel responseModel;
-
+    print(response.statusCode);
     if (response.statusCode == 200) {
       print("Success fully created farm");
-      responseModel = ResponseModel(true, "Successfully created farm");
+
+      responseModel = ResponseModel(true, response);
 
       getFarms();
 
@@ -55,7 +56,7 @@ class FarmController extends GetxController {
       _isLoading = false;
       return responseModel;
     } else {
-      responseModel = ResponseModel(false, "Couldn't create the farm");
+      responseModel = ResponseModel(false, response);
 
       _isLoading = false;
       getFarms();

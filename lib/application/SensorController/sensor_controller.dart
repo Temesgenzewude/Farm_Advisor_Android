@@ -41,13 +41,13 @@ class SensorController extends GetxController implements GetxService {
     ResponseModel responseModel;
 
     if (response.statusCode == 200) {
-      responseModel = ResponseModel(true, "Successfully created sensor");
+      responseModel = ResponseModel(true, response);
 
       update();
       _isLoading = false;
       return responseModel;
     } else {
-      responseModel = ResponseModel(false, "Couldn't create the sensor");
+      responseModel = ResponseModel(false, response);
 
       _isLoading = false;
 
